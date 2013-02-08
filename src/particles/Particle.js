@@ -42,93 +42,91 @@ SPP.Particle.prototype = {
 		return true;
 	},
 	update : function() {
-		with (this)
-		{
-			if (isLive())
-			{
-				sumForce.reset(0, 0);
-				for ( var i in forcesMap)
-				{
-					if (!forcesMap[i].isLive())
-					{
-						delete forcesMap[i];
-					} else
-					{
-						sumForce.plus(forcesMap[i].value);
-						a.reset(sumForce.x, sumForce.y);
-					}
-					;
-				}
-				v.plus(a);
-				v.x *= (1 - f.x);
-				v.y *= (1 - f.y);
-				position.plus(v);
-				point.x = position.x;
-				point.y = position.y;
-				if (this.boundary != null)
-				{
-					if(boundary.type==1)this.bounce();
-					else this.bounce2();
-				}
-					
-				return;
-			}
-			dispatchEvent(new SPP.Event("dead"));
 
+		if (this.isLive())
+		{
+			this.sumForce.reset(0, 0);
+			for ( var i in this.forcesMap)
+			{
+				if (!this.forcesMap[i].isLive())
+				{
+					delete this.forcesMap[i];
+				} else
+				{
+					this.sumForce.plus(this.forcesMap[i].value);
+					this.a.reset(this.sumForce.x, this.sumForce.y);
+				}
+				;
+			}
+			this.v.plus(this.a);
+			this.v.x *= (1 - this.f.x);
+			this.v.y *= (1 - this.f.y);
+			this.position.plus(this.v);
+			this.point.x = this.position.x;
+			this.point.y = this.position.y;
+			if (this.boundary != null)
+			{
+				if (this.boundary.type == 1)
+					this.bounce();
+				else
+					this.bounce2();
+			}
+
+			return;
 		}
+		this.dispatchEvent(new SPP.Event("dead"));
+
 	},
 	bounce : function() {
-		with (this)
+
+		if (this.position.x < this.boundary.left()
+				|| this.position.x > this.boundary.right())
 		{
 
-			if (position.x < boundary.left() || position.x > boundary.right())
-			{
-
-				position.x = position.x < boundary.left() ? boundary.left()
-						: boundary.right();
-				v.scaleX(-bounceIntensity);
-				a.scale(0);
-			}
-			if (position.y < boundary.top() || position.y > boundary.bottom())
-			{
-
-				position.y = position.y < boundary.top() ? boundary.top()
-						: boundary.bottom();
-				v.scaleY(-bounceIntensity);
-				a.scale(0);
-			}
+			this.position.x = this.position.x < this.boundary.left() ? this.boundary
+					.left()
+					: this.boundary.right();
+			this.v.scaleX(-this.bounceIntensity);
+			this.a.scale(0);
 		}
+		if (this.position.y < this.boundary.top()
+				|| this.position.y > this.boundary.bottom())
+		{
+
+			this.position.y = this.position.y < this.boundary.top() ? this.boundary
+					.top()
+					: this.boundary.bottom();
+			this.v.scaleY(-this.bounceIntensity);
+			this.a.scale(0);
+		}
+
 	},
 	bounce2 : function() {
-		with (this)
+
+		if (this.position.x < this.boundary.left())
 		{
 
-			if (position.x < boundary.left())
-			{
+			this.position.x = this.boundary.right();
 
-				position.x = boundary.right();
-
-			}
-			;
-			if (position.x > boundary.right())
-			{
-
-				position.x = boundary.left();
-
-			}
-			;
-			if (position.y < boundary.top())
-			{
-
-				position.y = boundary.bottom();
-			}
-			;
-			if (position.y > boundary.bottom())
-			{
-				position.y = boundary.top();
-			}
-			;
 		}
+		if (this.position.x > this.boundary.right())
+		{
+
+			this.position.x = this.boundary.left();
+
+		}
+
+		if (this.position.y < this.boundary.top())
+		{
+
+			this.position.y = this.boundary.bottom();
+		}
+
+		if (this.position.y > this.boundary.bottom())
+		{
+			this.position.y = this.boundary.top();
+		}
+
 	},
 	destory : function() {
 
