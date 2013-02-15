@@ -74,7 +74,6 @@ SPP.Particle.prototype = {
 
 			return;
 		}
-		console.log("dispatchEvent,dead")
 		this.dispatchEvent(new SPP.Event("dead"));
 
 	},
