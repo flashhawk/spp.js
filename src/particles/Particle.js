@@ -74,6 +74,7 @@ SPP.Particle.prototype = {
 
 			return;
 		}
+		console.log("dispatchEvent,dead")
 		this.dispatchEvent(new SPP.Event("dead"));
 
 	},
@@ -134,7 +135,7 @@ SPP.Particle.prototype = {
 	reset : function() {
 		this.forcesMap = {};
 		this.extra = {};
-		this.removeAllEventListeners();
+
 	}
 
 };

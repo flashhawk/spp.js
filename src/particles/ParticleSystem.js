@@ -23,9 +23,10 @@ SPP.ParticleSystem = function() {
 		if (index == -1)
 			return;
 		_particles.splice(index, 1);
-		// p.removeEventListener("dead", removeDeadParticle);
+		p.removeEventListener("dead", removeDeadParticle);
 		p.reset();
 		_particlePool.recycle(p);
+		
 	};
 	this.removeAllParticles = function() {
 		var i = _particles.length;
