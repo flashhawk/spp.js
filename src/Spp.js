@@ -1,5 +1,5 @@
 var SPP = SPP || {
-	REVISION : '1',
+	REVISION : 'alpha',
 	AUTHOR : "flashhawk",
 	BLOG : "flashquake.cn"
 };
