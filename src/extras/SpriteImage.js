@@ -1,4 +1,4 @@
-SPP.Sprite=function() 
+SPP.SpriteImage=function() 
 {
 	SPP.Particle.call(this);
 	this.context=null;
@@ -11,9 +11,9 @@ SPP.Sprite=function()
 	this.registrationY=0.5;
 	
 };
-SPP.Sprite.prototype = SPP.inherit(SPP.Particle.prototype);
-SPP.Sprite.prototype.constructor = SPP.Sprite;
-SPP.Sprite.prototype.update = function()
+SPP.SpriteImage.prototype = SPP.inherit(SPP.Particle.prototype);
+SPP.SpriteImage.prototype.constructor = SPP.SpriteImage;
+SPP.SpriteImage.prototype.update = function()
 {
 	if(this.context==null||this.texture==null)return;
 	this.context.globalAlpha=this.alpha;
@@ -34,19 +34,19 @@ SPP.Sprite.prototype.update = function()
 	
 	SPP.Particle.prototype.update.apply(this);
 };
-SPP.Sprite.prototype.init = function(x,y,life,texture,context) 
+SPP.SpriteImage.prototype.init = function(x,y,life,texture,context) 
 {
 	SPP.Particle.prototype.init.apply(this,[x,y,life]);
 	this.context=context;
 	this.texture=texture;
 };
 //x ,y,topleft percent
-SPP.Sprite.prototype.setRegistration=function(x,y)
+SPP.SpriteImage.prototype.setRegistration=function(x,y)
 {
 	this.registrationX=x;
 	this.registrationY=y;
 };
-SPP.Sprite.prototype.reset = function() 
+SPP.SpriteImage.prototype.reset = function() 
 {
 	SPP.Particle.prototype.reset.apply(this);
 	this.context=null;
