@@ -13,4 +13,4 @@ Feature
 
 Getting Started
 -------
- 
+examples/getting_started
