@@ -40,12 +40,16 @@ SPP.ParticleSystem = function() {
 	this.render = function() {
 		SPP.frameTime = (Date.now() - _lastTime) * 0.001;
 		_lastTime = Date.now();
+		/*
 		var l = _particles.length;
 		while (l-- > 0)
 		{
-
 			_particles[l].update();
-
+		}*/
+		
+		for ( var i in _particles)
+		{
+			_particles[i].update();
 		}
 	};
 	this.resume = function() {

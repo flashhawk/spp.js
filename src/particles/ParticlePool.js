@@ -25,6 +25,7 @@ SPP.ParticlePool = function()
 	};
 	this.getParticles = function()
 	{
-		return _particles.slice();
+		//return _particles.slice();
+		return _particles;
 	};
 };

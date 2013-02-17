@@ -14,8 +14,13 @@ SPP.Particle = function() {
 	this.bounceIntensity = 2;
 };
 SPP.Particle.prototype = {
-	constructor : constructor,
+	constructor : SPP.Particle,
 	init : function(x, y, life) {
+		if (life <= 0)
+		{
+			this.dispatchEvent(new SPP.Event("dead"));
+			return;
+		}
 		this.life = life || Infinity;
 		this.position.reset(x, y);
 		this.point.x = this.position.x;
@@ -35,67 +40,55 @@ SPP.Particle.prototype = {
 		}
 
 	},
-	isLive : function() {
-
-		if ((this.life -= SPP.frameTime) <= 0)
-			return false;
-		return true;
-	},
 	update : function() {
-
-		if (this.isLive())
+		this.customUpdate();
+		this.sumForce.reset(0, 0);
+		for ( var i in this.forcesMap)
 		{
-			this.sumForce.reset(0, 0);
-			for ( var i in this.forcesMap)
+			if (!this.forcesMap[i].isLive())
 			{
-				if (!this.forcesMap[i].isLive())
-				{
-					delete this.forcesMap[i];
-				} else
-				{
-					this.sumForce.plus(this.forcesMap[i].value);
-					this.a.reset(this.sumForce.x, this.sumForce.y);
-				}
-				;
-			}
-			this.v.plus(this.a);
-			this.v.x *= (1 - this.f.x);
-			this.v.y *= (1 - this.f.y);
-			this.position.plus(this.v);
-			this.point.x = this.position.x;
-			this.point.y = this.position.y;
-			if (this.boundary != null)
+				delete this.forcesMap[i];
+			} else
 			{
-				if (this.boundary.type == 1)
-					this.bounce();
-				else
-					this.bounce2();
+				this.sumForce.plus(this.forcesMap[i].value);
+				this.a.reset(this.sumForce.x, this.sumForce.y);
 			}
-
-			return;
+			;
 		}
+		this.v.plus(this.a);
+		this.v.x *= (1 - this.f.x);
+		this.v.y *= (1 - this.f.y);
+		this.position.plus(this.v);
+		this.point.x = this.position.x;
+		this.point.y = this.position.y;
+		if (this.boundary != null)
+		{
+			if (this.boundary.type == 1)
+				this.bounce();
+			else
+				this.bounce2();
+		}
+
+		this.life -= SPP.frameTime;
+		if (this.life > 0)
+			return;
 		this.dispatchEvent(new SPP.Event("dead"));
+
+	},
+	customUpdate : function() {
 
 	},
 	bounce : function() {
 
-		if (this.position.x < this.boundary.left()
-				|| this.position.x > this.boundary.right())
+		if (this.position.x < this.boundary.left()|| this.position.x > this.boundary.right())
 		{
-
-			this.position.x = this.position.x < this.boundary.left() ? this.boundary
-					.left()
-					: this.boundary.right();
+			this.position.x = this.position.x < this.boundary.left() ? this.boundary.left(): this.boundary.right();
 			this.v.scaleX(-this.bounceIntensity);
 			this.a.scale(0);
 		}
-		if (this.position.y < this.boundary.top()
-				|| this.position.y > this.boundary.bottom())
+		if (this.position.y < this.boundary.top()|| this.position.y > this.boundary.bottom())
 		{
-
-			this.position.y = this.position.y < this.boundary.top() ? this.boundary
-					.top()
-					: this.boundary.bottom();
+			this.position.y = this.position.y < this.boundary.top() ? this.boundary.top(): this.boundary.bottom();
 			this.v.scaleY(-this.bounceIntensity);
 			this.a.scale(0);
 		}
@@ -105,20 +98,16 @@ SPP.Particle.prototype = {
 
 		if (this.position.x < this.boundary.left())
 		{
-
 			this.position.x = this.boundary.right();
-
 		}
+		
 		if (this.position.x > this.boundary.right())
 		{
-
 			this.position.x = this.boundary.left();
-
 		}
 
 		if (this.position.y < this.boundary.top())
 		{
-
 			this.position.y = this.boundary.bottom();
 		}
 
@@ -132,6 +121,7 @@ SPP.Particle.prototype = {
 
 	},
 	reset : function() {
+		this.v.reset(0, 0);
 		this.forcesMap = {};
 		this.extra = {};
 
