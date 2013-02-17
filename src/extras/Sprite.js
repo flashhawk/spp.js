@@ -15,7 +15,7 @@ SPP.Sprite.prototype = SPP.inherit(SPP.Particle.prototype);
 SPP.Sprite.prototype.constructor = SPP.Sprite;
 SPP.Sprite.prototype.update = function()
 {
-	if(	this.context==null||this.texture==null)return;
+	if(this.context==null||this.texture==null)return;
 	this.context.globalAlpha=this.alpha;
 	this.context.translate(this.position.x,this.position.y);
 	this.context.rotate(this.rotation);
