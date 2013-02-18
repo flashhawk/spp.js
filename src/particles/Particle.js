@@ -40,8 +40,8 @@ SPP.Particle.prototype = {
 		}
 
 	},
-	update : function() {
-		this.customUpdate();
+	render : function() {
+		this.update();
 		this.sumForce.reset(0, 0);
 		for ( var i in this.forcesMap)
 		{
@@ -75,7 +75,7 @@ SPP.Particle.prototype = {
 		this.dispatchEvent(new SPP.Event("dead"));
 
 	},
-	customUpdate : function() {
+	update : function() {
 
 	},
 	bounce : function() {

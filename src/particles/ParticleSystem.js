@@ -44,12 +44,12 @@ SPP.ParticleSystem = function() {
 		var l = _particles.length;
 		while (l-- > 0)
 		{
-			_particles[l].update();
+			_particles[l].render();
 		}*/
 		
 		for ( var i in _particles)
 		{
-			_particles[i].update();
+			_particles[i].render();
 		}
 	};
 	this.resume = function() {

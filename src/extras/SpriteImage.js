@@ -32,7 +32,6 @@ SPP.SpriteImage.prototype.update = function()
 	
 	if(this.onUpdate)this.onUpdate.apply(this);
 	
-	SPP.Particle.prototype.update.apply(this);
 };
 SPP.SpriteImage.prototype.init = function(x,y,life,texture,context) 
 {
