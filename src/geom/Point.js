@@ -6,6 +6,11 @@ SPP.Point=function(x,y)
 SPP.Point.prototype=
 {
     constructor:SPP.Point,
+    reset:function(x,y)
+    {
+    	this.x=x||0;
+        this.y=y||0;
+    },
     clone:function()
     {
         return new SPP.Point(this.x,this.y);

@@ -121,9 +121,18 @@ SPP.Particle.prototype = {
 
 	},
 	reset : function() {
+		this.position.reset(0, 0);
+		this.point.reset(0, 0);
 		this.v.reset(0, 0);
+		this.a.reset(0,0);
+		this.f.reset(0.1, 0.1);
+		this.life = 0;
 		this.forcesMap = {};
 		this.extra = {};
+		this.sumForce.reset(0, 0);
+
+		this.boundary = null;
+		this.bounceIntensity = 2;
 
 	}
 
