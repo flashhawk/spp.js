@@ -10,7 +10,8 @@ SPP.ParticleSystem = function() {
 	this.createParticle = function(particleType) {
 		var p = _particlePool.get(particleType);
 		p.addEventListener("dead", removeDeadParticle);
-		_particles.push(p);
+		//_particles.push(p);
+		_particles.unshift(p);
 		return p;
 	};
 	var removeDeadParticle = function(event) {
@@ -40,17 +41,17 @@ SPP.ParticleSystem = function() {
 	this.render = function() {
 		SPP.frameTime = (Date.now() - _lastTime) * 0.001;
 		_lastTime = Date.now();
-		/*
+		
 		var l = _particles.length;
 		while (l-- > 0)
 		{
 			_particles[l].render();
-		}*/
-		
+		}
+		/*
 		for ( var i in _particles)
 		{
 			_particles[i].render();
-		}
+		}*/
 	};
 	this.resume = function() {
 		_lastTime += (Date.now() - _lastTime);
