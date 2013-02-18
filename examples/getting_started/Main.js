@@ -100,7 +100,6 @@ MyParticle.prototype = SPP.inherit(SPP.Particle.prototype);
 MyParticle.prototype.constructor = MyParticle;
 
 MyParticle.prototype.update = function() {
-	SPP.Particle.prototype.update.apply(this);
 	//this.rotation+=0.1;
 	this.scale-=.02;
 	if(this.scale<0)
