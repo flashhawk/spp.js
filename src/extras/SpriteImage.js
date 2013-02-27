@@ -10,6 +10,7 @@ SPP.SpriteImage=function()
 	this.registrationX=0.5;
 	this.registrationY=0.5;
 	
+	
 };
 SPP.SpriteImage.prototype = SPP.inherit(SPP.Particle.prototype);
 SPP.SpriteImage.prototype.constructor = SPP.SpriteImage;
@@ -57,5 +58,12 @@ SPP.SpriteImage.prototype.reset = function()
 	this.registrationX=0.5;
 	this.registrationY=0.5;
 };
-
+SPP.SpriteImage.prototype.width=function()
+{
+	return this.texture.width*scale;
+};
+SPP.SpriteImage.prototype.height=function()
+{
+	return this.texture.height*scale;
+};
 
