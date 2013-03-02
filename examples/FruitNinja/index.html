@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style type="text/css">
+body,html {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #000;
+		
+	}
+#bottom{
+	
+	background-image: url(assets/bg.jpg);
+}
+
+#fork{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 149px;
+	height: 149px;
+	cursor: pointer;
+	background-image: url(assets/forkme.png);
+	z-index: 0;
+}
+#info a{
+	color: #666666;
+}
+#info
+{
+	display:block;
+	position: absolute; 
+	left: 50%;
+	top: 50%;
+	width: 750px;
+	height: 500px;
+	margin: -270px auto auto -375px;
+	color:#555555;
+	font-size:13px;
+}
+#loading{
+	position: absolute; 
+	z-index: 0;
+	left: 50%;
+	top: 50%;
+	width: 32px;
+	height: 32px;
+	margin: -16px auto auto -16px;
+	background-image: url(assets/loading.gif);
+}
+canvas{
+	display:none;
+	position: absolute; 
+	z-index: 0;
+	left: 50%;
+	top: 50%;
+	width: 750px;
+	height: 500px;
+	margin: -250px auto auto -375px;
+	
+}
+</style>
+<title>Fruit Ninja HTML5 Canvas</title>
+<script src="js/libs/preloadjs-0.3.0.min.js"></script>
+<script src="js/libs/soundjs-0.4.0.min.js"></script>
+<script src="js/libs/soundjs.flashplugin-0.4.0.min.js"></script>
+<script src="js/libs/TweenLite.min.js"></script>
+<script src="js/libs/EasePack.min.js"></script>
+<script src="js/libs/spp.min.js"></script>
+
+<script src="js/src/FruitGame.js"></script>
+<script src="js/src/Assets.js"></script>
+<script src="js/src/AssetsManager.js"></script>
+<script src="js/src/Collide.js"></script>
+<script src="js/src/Fruit.js"></script>
+<script src="js/src/Module_fruit.js"></script>
+<script src="js/src/Module_bomb.js"></script>
+<script src="js/src/Module_collide.js"></script>
+<script src="js/src/Module_blade.js"></script>
+<script src="js/src/Module_ui.js"></script>
+<script src="js/src/Main.js"></script>
+</head>
+<body>
+<a id="fork" href="https://github.com/flashhawk" target="_blank"></a>
+<div id="info" style="display:none">水果忍者HTML5 canvas版,由<a href="https://github.com/flashhawk/spp.js" target="_blank">spp.js</a>开源引擎开发，素材来源于互联网。<a href="http://weibo.com/flashawk" target="_blank">源码下载</a></div>
+<canvas id="bottom" style="display:none">Your borwser does not suport html5 canvans!</canvas>
+<canvas id="middle" style="display:none">Your borwser does not suport html5 canvans!</canvas>
+<canvas id="top" style="display:none">Your borwser does not suport html5 canvans!</canvas>
+<div id="loading" style="display:block" ></div>
+</body>
+</html>
