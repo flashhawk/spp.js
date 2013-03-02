@@ -139,8 +139,6 @@ function replay(e)
 {
 	topCanvas.removeEventListener('click', replay, false);
 	hideGameoverUI();
-	hideScoreUI();
-	showStartGameUI();
 };
 
 //mouse event

@@ -1,6 +1,7 @@
 var FruitGame = FruitGame || {
 	REVISION : '1',
 	AUTHOR : "flashhawk",
+	GITHUB:"https://github.com/flashhawk"
 };
 
 var gameWidth=750;
