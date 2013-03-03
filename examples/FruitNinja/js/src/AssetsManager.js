@@ -1,7 +1,7 @@
 FruitGame.AssetsManager=function() 
 {
 	SPP.EventDispatcher.call(this);
-	var _this=this,i=0;j=0;
+	var _this=this,i=0,j=0;
 	var fruitsDir="assets/fruits/";
 	var fruitStateLabels=["w","l","r","s","j"];
 	var fruitImageType=".png";
@@ -12,8 +12,6 @@ FruitGame.AssetsManager=function()
 	this.sounds={};
 	this.loader = new createjs.LoadQueue();
 	this.loader.installPlugin(createjs.Sound);
-	createjs.Sound.registerPlugins([createjs.WebAudioPlugin, createjs.HTMLAudioPlugin, createjs.FlashPlugin]);
-	createjs.FlashPlugin.BASE_PATH="js/libs/";
 	var handleComplete=function()
 	{
 		var fruits=FruitGame.assets.fruits;
