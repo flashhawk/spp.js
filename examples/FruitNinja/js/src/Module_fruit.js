@@ -47,7 +47,7 @@
 		var speed=3+ Math.random() * 3;
 		
 		var right = particleSystem.createParticle(FruitGame.Fruit);
-		right.init(target.position.x,target.position.y,2,target.textureObj.r,assetsManager.shadow,middleContext);
+		right.init(target.position.x,target.position.y,Infinity,target.textureObj.r,assetsManager.shadow,middleContext);
 		right.v.reset(0, -speed);
 		right.v.rotate(20*Math.random());
 		right.f.reset(0, 0);
@@ -56,7 +56,7 @@
 		right.addForce("g", gravity);
 		
 		var left=  particleSystem.createParticle(FruitGame.Fruit);
-		left.init(target.position.x,target.position.y,99,target.textureObj.l,assetsManager.shadow,middleContext);
+		left.init(target.position.x,target.position.y,Infinity,target.textureObj.l,assetsManager.shadow,middleContext);
 		left.v.reset(0, -(speed));
 		left.v.rotate(-20*Math.random());
 		left.f.reset(0, 0);
@@ -80,7 +80,7 @@
 		var x=target.position.x;
 		if(x<=0)x=40;
 		if(x>gameWidth)x=gameWidth-40;
-		lose.init(x,gameHeight-assetsManager.miss.height,999,assetsManager.lose,topContext);
+		lose.init(x,gameHeight-assetsManager.miss.height,Infinity,assetsManager.lose,topContext);
 		lose.v.reset(0,-1);
 		lose.f.reset(0.01,0.01);
 		lose.onUpdate=missUpdate;
