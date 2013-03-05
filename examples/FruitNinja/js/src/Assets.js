@@ -18,7 +18,6 @@ FruitGame.assets={
 			
 			{id:"throwFruit", src:"assets/sound/throw-fruit.mp3|assets/sound/throw-fruit.ogg"},
 			{id:"bombExplode", src:"assets/sound/bomb-explode.mp3|assets/sound/bomb-explode.ogg"},
-	        {id:"splatter", src:"assets/sound/splatter.mp3|assets/sound/splatter.ogg"},
-			{id:"sword", src:"assets/sound/sword.mp3|assets/sound/sword.ogg"}
+	        {id:"splatter", src:"assets/sound/splatter.mp3|assets/sound/splatter.ogg"}
 		]
 };
