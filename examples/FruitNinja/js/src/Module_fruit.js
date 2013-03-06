@@ -80,7 +80,7 @@
 		var x=target.position.x;
 		if(x<=0)x=40;
 		if(x>gameWidth)x=gameWidth-40;
-		lose.init(x,gameHeight-assetsManager.miss.height,Infinity,assetsManager.lose,topContext);
+		lose.init(x,gameHeight-assetsManager.miss.height,Infinity,assetsManager.miss,topContext);
 		lose.v.reset(0,-1);
 		lose.f.reset(0.01,0.01);
 		lose.onUpdate=missUpdate;
