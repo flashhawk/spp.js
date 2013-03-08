@@ -73,14 +73,5 @@ SPP.MathUtils.atan2D = function(y, x)
 
 SPP.MathUtils.random=function(n)
 {
-	var randomNum;
-	if (n <= 0)
-	{
-		randomNum = 0;
-	}
-	else 
-	{
-		randomNum = Math.round(Math.random() * (n - 1));
-	}
-	return randomNum;
+	return n*Math.random()>>0;
 };

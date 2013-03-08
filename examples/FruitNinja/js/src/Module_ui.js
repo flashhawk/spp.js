@@ -10,8 +10,7 @@
 		 gameState=GAME_READY;
 		
 		 ui_gameTitle = particleSystem.createParticle(SPP.SpriteImage);
-		 ui_gameTitle.registrationX=0;
-		 ui_gameTitle.registrationY=0;
+		 ui_gameTitle.setRegistration(0,0);
 		 ui_gameTitle.init(0,-assetsManager.gametitle.height,Infinity,assetsManager.gametitle,topContext);
 		 TweenLite.to(ui_gameTitle.position,0.5,{y:0});
 		 
@@ -50,21 +49,21 @@
 		{
 			return;
 		}
-		bottomContext.font="28px Courier-Bold";
-		bottomContext.fillText(" "+score,32,10);
+		bottomContext.font="36px Courier-Bold";
+		bottomContext.fillText(" "+score,24,6);
 		bottomContext.font="14px Courier-Bold";
-		bottomContext.fillText("Best:"+storage.highScore,13,47);
+		bottomContext.fillText("Best:"+storage.highScore,13,50);
 	};
 
 	showScoreUI=function()
 	{
 		ui_scoreIcon = particleSystem.createParticle(SPP.SpriteImage);
-		ui_scoreIcon.init(28,25,Infinity,assetsManager.score,bottomContext);
+		ui_scoreIcon.setRegistration(0,0);
+		ui_scoreIcon.init(10,10,Infinity,assetsManager.score,bottomContext);
 
 		ui_gameLife = particleSystem.createParticle(SPP.SpriteImage);
-		ui_gameLife.registrationX=0;
-		ui_gameLife.registrationX=0;
-		ui_gameLife.init(gameWidth-ui_gamelifeTexture.width,25,Infinity,ui_gamelifeTexture,bottomContext);
+		ui_gameLife.setRegistration(1,0);
+		ui_gameLife.init(gameWidth,8,Infinity,ui_gamelifeTexture,bottomContext);
 	};
 	
     hideScoreUI=function()

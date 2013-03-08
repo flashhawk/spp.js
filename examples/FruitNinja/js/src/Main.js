@@ -79,6 +79,7 @@ function startGame(e)
 	resetGameData();
 	showScoreUI();
 	gameState=GAME_PLAYING;
+	
 }
 function renderTimer()
 {
