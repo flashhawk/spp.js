@@ -13,4 +13,4 @@ Feature
 
 Getting Started
 -------
-examples/getting_started
+-[examples/getting_started](<https://github.com/flashhawk/spp.js/tree/master/examples/getting_started>)
