@@ -14,3 +14,7 @@ Feature
 Getting Started
 -------
 -[examples/getting_started](<https://github.com/flashhawk/spp.js/tree/master/examples/getting_started>)
+
+Game demo
+-------
+-[FruitNinja](<http://www.flashquake.cn/?p=1204>)
