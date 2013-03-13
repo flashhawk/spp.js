@@ -1,4 +1,4 @@
-spp.js
+![spp.js logo](https://raw.github.com/flashhawk/spp.js/master/logo.jpg)
 ======
 
 'spp.js' is a sample physics particle system engine for javascript.
