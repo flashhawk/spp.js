@@ -5,7 +5,7 @@ SPP.ParticlePool = function()
 	{
 		for ( var i in _particles)
 		{
-			if (_particles[i].constructor == particleType)
+			if (_particles[i].constructor === particleType)
 			return _particles.splice(i, 1)[0];
 		}
 		return new particleType();
