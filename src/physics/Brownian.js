@@ -4,7 +4,7 @@ SPP.Brownian=function(maxValue,cycle,life)
 	this.maxValue=maxValue;
 	this.cycle=cycle;
 	this.pastTime=0;
-	this.update();
+	this.value.reset((Math.random()*2-1)*this.maxValue, (Math.random()*2-1)*this.maxValue);
 };
 SPP.Brownian.prototype=SPP.inherit(SPP.Force.prototype);
 SPP.Brownian.prototype.constructor=SPP.Brownian;
