@@ -6,7 +6,7 @@ SPP.Force = function(x, y, life) {
 
 SPP.Force.prototype = {
 	constructor : SPP.Force,
-	isLive : function() {
+	isActive : function() {
 		if ((this.life-=SPP.frameTime) <= 0)
 		{
 			this.destory();
@@ -15,7 +15,6 @@ SPP.Force.prototype = {
 		}
 		this.update();
 		return true;
-
 	},
 	update : function() {
 

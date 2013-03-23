@@ -1,30 +1,28 @@
-SPP.Attraction=function(attractionPoint,maxValue,r,life)
+SPP.Attraction=function(attractionPosition,maxValue,r,life)
 {
-	SPP.Force.call(this,attractionPoint.x,attractionPoint.y, life);
+	SPP.Force.call(this,0,0, life);
 	this.maxValue=maxValue;
 	this.r=r;
-	this.attractionPoint=attractionPoint;
-	this.attractionVector=new SPP.Vector2D();
-	this.target=null;
-	//this.targetPoint=new SPP.Point();
+	this.attractionPosition=attractionPosition;
+	this.targetParticle=null;
+	this.attractionPoint=new SPP.Point();
+	this.targetPoint=new SPP.Point();
+	
 };
 SPP.Attraction.prototype=SPP.inherit(SPP.Force.prototype);
 SPP.Attraction.prototype.constructor=SPP.Attraction;
 SPP.Attraction.prototype.update=function()
 {
-	//this.targetPoint.x = this.target.position.x;
-	//this.targetPoint.y = this.target.position.y;
-	
-	this.attractionVector.reset(this.attractionPoint.x, this.attractionPoint.y);
-	var d = SPP.Point.distance(this.attractionPoint, this.target.point);
+	this.attractionPoint.copyFromVector(this.attractionPosition);
+	this.targetPoint.copyFromVector(this.targetParticle.position);
+	var d = SPP.Point.distance(this.attractionPoint, this.targetPoint);
 	if (d < this.r)
 	{
-		this.value = this.target.position.minusNew(this.attractionVector);
-		this.value.scale(this.maxValue / d);
+		this.value = this.targetParticle.position.minusNew(this.attractionPosition);
 	}
 	else 
 	{
-		this.value = this.attractionVector.minusNew(this.target.position);
-		this.value.scale(this.maxValue / d);
-	}
+		this.value = this.attractionPosition.minusNew(this.targetParticle.position);
+	};
+	this.value.scale(this.maxValue / d);
 };

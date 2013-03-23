@@ -11,6 +11,11 @@ SPP.Point.prototype=
     	this.x=x||0;
         this.y=y||0;
     },
+    copyFromVector:function(v)
+    {
+    	this.x=v.x;
+    	this.y=v.y;
+    },
     clone:function()
     {
         return new SPP.Point(this.x,this.y);

@@ -3,6 +3,7 @@ var SPP = SPP || {
 	AUTHOR : "flashhawk",
 	BLOG : "flashquake.cn"
 };
+//通过原型继承创建一个新对象
 SPP.inherit = function(p) {
 	if (p == null)
 		throw TypeError();
@@ -17,6 +18,10 @@ SPP.inherit = function(p) {
 	f.prototype = p;
 	return new f();
 
+};
+SPP.extend=function(obj, source )
+{
+	
 };
 
 SPP.frameTime=0;

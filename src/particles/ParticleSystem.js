@@ -11,7 +11,7 @@ SPP.ParticleSystem = function() {
 		var p = _particlePool.get(particleType);
 		p.reset();
 		p.addEventListener("dead", removeDeadParticle);
-		_particles.push(p);
+		_particles.unshift(p);
 		return p;
 	};
 	var removeDeadParticle = function(event) {
