@@ -3,14 +3,11 @@ SPP.SpriteImage=function()
 	SPP.Particle.call(this);
 	this.context=null;
 	this.texture=null;
-	//this.onUpdate=null;
 	this.scale=1;
 	this.rotation=0;
 	this.alpha=1;	
 	this.registrationX=0.5;
 	this.registrationY=0.5;
-	
-	
 };
 SPP.SpriteImage.prototype = SPP.inherit(SPP.Particle.prototype);
 SPP.SpriteImage.prototype.constructor = SPP.SpriteImage;
@@ -30,9 +27,6 @@ SPP.SpriteImage.prototype.update = function()
 			this.texture.height);
 	this.context.setTransform(1,0,0,1,0,0);
 	this.context.globalAlpha=1;
-	
-	//if(this.onUpdate)this.onUpdate.apply(this);
-	
 };
 SPP.SpriteImage.prototype.init = function(x,y,life,texture,context) 
 {
@@ -66,4 +60,3 @@ SPP.SpriteImage.prototype.height=function()
 {
 	return this.texture.height*scale;
 };
-
