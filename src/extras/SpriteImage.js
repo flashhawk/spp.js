@@ -39,7 +39,6 @@ SPP.SpriteImage.prototype.reset = function()
 	SPP.Particle.prototype.reset.apply(this);
 	this.context=null;
 	this.texture=null;
-	this.onUpdate=null;
 	this.scale=1;
 	this.rotation=0;
 	this.alpha=1;	
