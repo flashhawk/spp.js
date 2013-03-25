@@ -50,6 +50,7 @@ var particle=ps.createParticle(SPP.Particle);
 particle.life=3;
 particle.position.x=50;
 particle.position.y=60;
+particle.addForce("someForceName",someForce);
 particle.onUpdate=someUpdateHander;
 particle.addEventListener("dead",deadHandler);
 animate();
@@ -65,9 +66,9 @@ function deadHandler(event)
 
 function animate()
 {
-    requestAnimationFrame(animate);
-        ps.render();
-    ...
+       requestAnimationFrame(animate);
+       ps.render();
+       ...
 } 
 
 </code></pre>
