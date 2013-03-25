@@ -45,9 +45,31 @@
 <li>Open source!</li>
 </ul><h3>Getting Started</h3>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>var ps=new SPP.ParticleSystem();
+var particle=ps.createParticle(SPP.Particle);
+particle.life=3;
+particle.position.x=50;
+particle.position.y=60;
+particle.onUpdate=someUpdateHander;
+particle.addEventListener("dead",deadHandler);
+animate();
+
+function someUpdateHander()
+{
+        ...
+};
+function deadHandler(event)
+{
+        ...
+};
+
+function animate()
+{
+    requestAnimationFrame(animate);
+        ps.render();
+    ...
+} 
+
 </code></pre>
 
 <h3>Support or Contact</h3>
