@@ -8,7 +8,7 @@ Spp.js is a sample physics particle system engine for javascript.
 * Code less, simple structure.
 * Based on classical Newtonian mechanics.
 * Make your own custom forces or particles
-* Easy to make interactive programs
+* Easy to build interactive projects.
 * Open source!
 
 ### Getting Started
