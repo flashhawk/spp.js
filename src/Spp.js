@@ -2,7 +2,8 @@ var SPP = SPP || {
 	REVISION : 'Beta',
 	AUTHOR : "flashhawk",
 	BLOG : "flashquake.cn",
-	github:"https://github.com/flashhawk"
+	github:"https://github.com/flashhawk",
+	weibo:"http://weibo.com/flashawk"
 };
 //通过原型继承创建一个新对象
 SPP.inherit = function(p) {
