@@ -14,10 +14,17 @@ SPP.Vector2D.prototype =
     {
       return new SPP.Vector2D(this.x,this.y);  
     },
+    copy: function ( v ) {
+
+		this.x = v.x;
+		this.y = v.y;
+		return this;
+	},
     reset : function(x, y)
     {
     	this.x = x || 0;
         this.y = y || 0;
+        return this;
     },
     /**
      *
@@ -32,37 +39,51 @@ SPP.Vector2D.prototype =
      * 向量相加,原向量改变;
      * @param	v 向量
      */
-    plus : function(v)
+    add : function(v)
     {
         this.x += v.x;
         this.y += v.y;
+        return this;
     },
     /**
      * 向量向量相加，返回新向量，原向量不变
      * @param	v 向量
      * @return   反回新向量
      */
-    plusNew : function(v)
+    addNew : function(v)
     {
         return new SPP.Vector2D(this.x + v.x, this.y + v.y);
+    },
+    addVectors:function(a,b)
+    {
+    	this.x = a.x + b.x;
+		this.y = a.y + b.y;
+		return this;
     },
     /**
      * 向量相减,原向量改变;
      * @param	v 向量
      */
-    minus : function(v)
+    sub : function(v)
     {
         this.x -= v.x;
         this.y -= v.x;
+        return this;
     },
     /**
      * 向量向量相减，返回新向量，原向量不变
      * @param	v  向量
      * @return   返回新向量
      */
-    minusNew : function(v)
+    subNew : function(v)
     {
         return new SPP.Vector2D(this.x - v.x, this.y - v.y);
+    },
+    subVectors:function(a,b)
+    {
+    	this.x = a.x - b.x;
+		this.y = a.y - b.y;
+		return this;
     },
     /**
      * 向量求反
@@ -71,14 +92,17 @@ SPP.Vector2D.prototype =
     {
         this.x *= -1;
         this.y *= -1;
+        return this;
     },
     negateX : function()
     {
         this.x *= -1;
+        return this;
     },
     negateY : function()
     {
         this.y *= -1;
+        return this;
     },
     /**
      * 返回一个反向量,愿向量不变
@@ -96,14 +120,17 @@ SPP.Vector2D.prototype =
     {
         this.x *= ratio;
         this.y *= ratio;
+        return this;
     },
     scaleX : function(ratio)
     {
         this.x *= ratio;
+        return this;
     },
     scaleY : function(ratio)
     {
         this.y *= ratio;
+        return this;
     },
     scaleNew : function(ratio)
     {
@@ -124,6 +151,7 @@ SPP.Vector2D.prototype =
     {
         var ratio = l / this.getLength();
         this.scale(ratio);
+        return this;
     },
     /**
      * 向量的角度
@@ -142,6 +170,7 @@ SPP.Vector2D.prototype =
         var l = this.getLength();
         this.x = l * SPP.MathUtils.cosD(angle);
         this.y = l * SPP.MathUtils.sinD(angle);
+        return this;
     },
     /**
      * 向量的旋转
@@ -155,6 +184,7 @@ SPP.Vector2D.prototype =
         var tempy = this.y;
         this.x = tempx * cosa - tempy * sina;
         this.y = tempx * sina + tempy * cosa;
+        return this;
     },
     rotateNew : function(angle)
     {
@@ -183,12 +213,22 @@ SPP.Vector2D.prototype =
         return v.scaleNew(k);
     },
     /**
-     * 返回一个标准化向量
+     * 返回一个标准化向量,原向量不变
      * @return
      */
-    normalized : function()
+    normalizeNew : function()
     {
-        return new SPP.Vector2D(this.x / this.getLength(), this.y / this.getLength());
+       // return new SPP.Vector2D(this.x / this.getLength(), this.y / this.getLength());
+        return this.clone().normalize();
+    },
+    /**
+     * 标准化向量
+     * @return
+     */
+    normalize:function()
+    {
+    	this.scale(1/this.getLength());
+    	return this;
     },
     /**
      *
@@ -216,5 +256,14 @@ SPP.Vector2D.prototype =
         var dp = this.dot(v);
         var cosAngle = dp / (this.getLength() * v.getLength());
         return SPP.MathUtils.acosD(cosAngle);
+    },
+    /**
+    *当向量作为点使用的时候返回两个点之间的距离
+    * @param	v
+    * @return  返回和向量v的夹角，度为单位
+    */
+    distanceTo:function(v)
+    {
+    	 return Math.sqrt(Math.pow(this.x-v.x,2) + Math.pow(this.y-v.y,2));
     }
 };

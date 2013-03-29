@@ -18,9 +18,3 @@ SPP.Brownian.prototype.update=function()
 		this.pastTime=0;
 	};
 };
-SPP.Brownian.prototype.destory=function()
-{
-	
-};
-
-

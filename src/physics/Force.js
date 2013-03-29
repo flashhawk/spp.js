@@ -16,11 +16,5 @@ SPP.Force.prototype = {
 		this.update();
 		return true;
 	},
-	update : function() {
-
-	},
-	destory : function() {
-
-	}
-
+	update : function() {}
 };

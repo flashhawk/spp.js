@@ -53,13 +53,13 @@ SPP.Particle.prototype = {
 				this.forcesMap[i]=null;
 			} else
 			{
-				this.resultant.plus(this.forcesMap[i].value);
+				this.resultant.add(this.forcesMap[i].value);
 			};
 		}
-		this.velocity.plus(this.resultant);
+		this.velocity.add(this.resultant);
 		this.velocity.x *= (1 - this.damp.x);
 		this.velocity.y *= (1 - this.damp.y);
-		this.position.plus(this.velocity);
+		this.position.add(this.velocity);
 		if (this.boundary != null)
 		{
 			this[boundaryType]();
