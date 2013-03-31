@@ -9,7 +9,6 @@ SPP.ParticlePool = function()
 			return _particles.splice(i, 1)[0];
 		}
 		return new particleType();
-
 	};
 	this.recycle = function(p)
 	{

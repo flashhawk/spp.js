@@ -2,7 +2,7 @@ SPP.ParticleSystem = function() {
 	var _particles = [];
 	var _particlePool = new SPP.ParticlePool();
 	var _lastTime = null;
-	var _this = this;
+	var _isRunning=false;
 
 	this.getParticles = function() {
 		return _particles;
@@ -10,49 +10,34 @@ SPP.ParticleSystem = function() {
 	this.createParticle = function(particleType) {
 		var p = _particlePool.get(particleType);
 		p.reset();
-		p.addEventListener("dead", removeDeadParticle);
-		_particles.unshift(p);
+		_particles.push(p);
 		return p;
 	};
-	var removeDeadParticle = function(event) {
-		var p = event.target;
-		_this.removeParticle(p);
-	};
-	this.removeParticle = function(p) {
-		var index = _particles.indexOf(p);
-
-		if (index == -1)
-			return;
-		_particles.splice(index, 1);
-		p.removeEventListener("dead", removeDeadParticle);
-		//p.reset();
-		_particlePool.recycle(p);
-		
-	};
-	this.removeAllParticles = function() {
-		var i = _particles.length;
-		while (i-- > 0)
-		{
-			this.removeParticle(_particles[i]);
-		}
-		_particles = [];
-	};
-
 	this.render = function() {
-		if(_lastTime==null)_lastTime=Date.now();
+		if(!_isRunning)return;
 		SPP.frameTime = (Date.now() - _lastTime) * 0.001;
 		_lastTime = Date.now();
 		var l = _particles.length;
+		for(var i=0;i<l;i++)
+		{
+			_particles[i].render();
+		};
 		while (l-- > 0)
 		{
-			_particles[l].render();
-		}
+			if ( _particles[l].life<=0 )
+            {
+				_particlePool.recycle(_particles[l]);
+				_particles.splice( l, 1 );
+            }
+		};
 	};
-	this.resume = function() {
-		_lastTime += (Date.now() - _lastTime);
+	this.start=function()
+	{
+		_lastTime=Date.now();
+		_isRunning=true;
 	};
-
-	this.getParticlePool = function() {
-		return _particlePool;
+	this.stop=function()
+	{
+		_isRunning=false;
 	};
 };
