@@ -22,6 +22,7 @@ particle.addForce("someForceName",someForce);
 particle.onUpdate=someUpdateHander;
 particle.addEventListener("dead",deadHandler);
 animate();
+ps.start();
 
 function someUpdateHander()
 {
