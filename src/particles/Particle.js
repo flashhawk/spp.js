@@ -62,7 +62,7 @@ SPP.Particle.prototype = {
 		this.position.add(this.velocity);
 		if (this.boundary != null)
 		{
-			this[boundaryType]();
+			this[this.boundaryType]();
 		}
 
 		this.life -= SPP.frameTime;

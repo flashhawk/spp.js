@@ -11,12 +11,12 @@ SPP.Repulsion.prototype.constructor=SPP.Repulsion;
 SPP.Repulsion.prototype.update=function()
 {
 	var d =this.repulsionPosition.distanceTo(this.targetParticle.position);
-	if(this.r>d)
+	if(d>this.r)
 	{
 		this.value.reset(0, 0);
 	}else
 	{
 		this.value.subVectors(this.targetParticle.position,this.repulsionPosition);
-		this.value.scale(maxValue / d);
+		this.value.scale(this.maxValue / d);
 	}
 };
