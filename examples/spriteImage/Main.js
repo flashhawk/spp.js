@@ -27,6 +27,7 @@ function init() {
 		initStatsBar();
 		resizeCanvas();
 		animate();
+		particleSystem.start();
 		demo();
 	});
 };

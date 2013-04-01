@@ -34,6 +34,7 @@ function init() {
 		initSpriteSheetData();
 		createjs.Ticker.setFPS(60);
 	    createjs.Ticker.addEventListener("tick", animate);
+	    particleSystem.start();
 
 	});
 }
