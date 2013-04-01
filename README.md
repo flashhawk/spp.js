@@ -45,6 +45,8 @@ function animate()
 * [spriteImage](http://flashhawk.github.com/spp.js/examples/spriteImage/)
 * [fruitNinja](http://flashhawk.github.com/spp.js/examples/fruitNinja/)
 * [easelJS](http://flashhawk.github.com/spp.js/examples/easelJS/)
+* [attraction](http://flashhawk.github.com/spp.js/examples/attraction/)
+* [repulsion](http://flashhawk.github.com/spp.js/examples/repulsion/)
 
 ### Support or Contact
 Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
