@@ -5,13 +5,13 @@
 		if (gameState == GAME_OVER)
 			return;
 		var i = bladeSystem.getParticles().length;
-		var lineWidth = 1;
+		var lineWidth = width;
 		var step = width / (i - 1);
+		topContext.beginPath();
 		while (i-- > 1)
 		{
-			topContext.beginPath();
 			if (i == 1)
-				topContext.lineWidth = width;
+				topContext.lineWidth = 1;
 			else
 				topContext.lineWidth = lineWidth;
 			var p = bladeSystem.getParticles()[i];
@@ -19,9 +19,9 @@
 			topContext.moveTo(p.position.x, p.position.y);
 			topContext.lineTo(next.position.x, next.position.y);
 			topContext.stroke();
-			lineWidth += step;
-			if (lineWidth >=width)
-				lineWidth = width;
+			lineWidth -= step;
+			if (lineWidth <=0)
+				lineWidth = 1;
 		}
 	};
 	buildColorBlade = function(color, width) {

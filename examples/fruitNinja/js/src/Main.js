@@ -38,9 +38,13 @@ function init()
 	
 	//particle system
 	particleSystem = new SPP.ParticleSystem();
+	particleSystem.start();
 	bladeSystem=new SPP.ParticleSystem();
+	bladeSystem.start();
 	fruitSystem=new SPP.ParticleSystem();
+	fruitSystem.start();
 	bombSystem=new SPP.ParticleSystem();
+	bombSystem.start();
 	gravity = new SPP.Gravity(0.15);
 	
 	//data 
