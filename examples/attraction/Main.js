@@ -36,7 +36,7 @@ function init() {
 
 function animate()
 {
-	animationID=requestAnimationFrame(animate);
+	requestAnimationFrame(animate);
 	//context.clearRect(0, 0, canvas.width, canvas.height);
 	context.fillStyle = 'rgba(0,0,0,0.5)';
 	context.fillRect(0, 0, canvas.width, canvas.height);
