@@ -9,8 +9,7 @@ SPP.SpriteImage=function()
 	this.regX=0.5;
 	this.regY=0.5;
 };
-SPP.SpriteImage.prototype = SPP.inherit(SPP.Particle.prototype);
-SPP.SpriteImage.prototype.constructor = SPP.SpriteImage;
+SPP.inherit(SPP.SpriteImage, SPP.Particle);
 SPP.SpriteImage.prototype.update = function()
 {
 	if(this.context==null||this.texture==null)return;

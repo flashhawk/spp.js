@@ -2,39 +2,53 @@ var SPP = SPP || {
 	REVISION : 'Beta',
 	AUTHOR : "flashhawk",
 	BLOG : "flashquake.cn",
-	github:"https://github.com/flashhawk",
-	weibo:"http://weibo.com/flashawk"
+	github : "https://github.com/flashhawk",
+	weibo : "http://weibo.com/flashawk"
 };
-//通过原型继承创建一个新对象
-SPP.inherit = function(p) {
-	if (p == null)
+SPP.frameTime = 0;
+SPP.inherit = function(ctor, superCtor)
+{
+	ctor.superClass = superCtor;
+	if (superCtor.prototype == null)
 		throw TypeError();
 	if (Object.create)
-		return Object.create(p);
-	var t = typeof (p);
+	{
+		ctor.prototype = Object.create(superCtor.prototype);
+		ctor.prototype.constructor = ctor;
+		return;
+	}
+	var t = typeof (superCtor.prototype);
 	if (t !== "object" && t !== "function")
 		throw TypeError();
-	function f() {
+	function f()
+	{
 	}
-	;
-	f.prototype = p;
-	return new f();
-
+	f.prototype = superCtor.prototype;
+	ctor.prototype = new f();
+	ctor.prototype.constructor = ctor;
 };
-SPP.extend=function(obj, source )
+SPP.extend = function(origin, add)
 {
-	
+	// Don't do anything if add isn't an object
+	if (!add || typeof add !== 'object')
+		return origin;
+
+	var keys = Object.keys(add);
+	var i = keys.length;
+	while (i--)
+	{
+		origin[keys[i]] = add[keys[i]];
+	}
+	return origin;
 };
-
-SPP.frameTime=0;
-
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
 
 // requestAnimationFrame polyfill by Erik Möller
 // fixes from Paul Irish and Tino Zijdel
 
-(function() {
+(function()
+{
 
 	var lastTime = 0;
 	var vendors = [ 'ms', 'moz', 'webkit', 'o' ];
@@ -53,11 +67,13 @@ SPP.frameTime=0;
 	if (window.requestAnimationFrame === undefined)
 	{
 
-		window.requestAnimationFrame = function(callback, element) {
+		window.requestAnimationFrame = function(callback, element)
+		{
 
 			var currTime = Date.now(), timeToCall = Math.max(0,
 					16 - (currTime - lastTime));
-			var id = window.setTimeout(function() {
+			var id = window.setTimeout(function()
+			{
 				callback(currTime + timeToCall);
 			}, timeToCall);
 			lastTime = currTime + timeToCall;
@@ -67,11 +83,9 @@ SPP.frameTime=0;
 
 	}
 
-	window.cancelAnimationFrame = window.cancelAnimationFrame || function(id) {
+	window.cancelAnimationFrame = window.cancelAnimationFrame || function(id)
+	{
 		window.clearTimeout(id);
 	};
-	
 
 }());
-
-

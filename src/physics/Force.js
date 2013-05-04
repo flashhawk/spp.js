@@ -1,20 +1,33 @@
-SPP.Force = function(x, y, life) {
-	SPP.EventDispatcher.call(this);
-	this.value = new SPP.Vector2D(x, y);
-	this.life = life || Infinity;
+SPP.Force = function()
+{
+	this.value=new SPP.Vector2D();
+	this.life=Infinity;
 };
-
 SPP.Force.prototype = {
 	constructor : SPP.Force,
-	isActive : function() {
-		if ((this.life-=SPP.frameTime) <= 0)
+	init:function(x,y,life)
+	{
+		this.value.reset(x, y);
+		this.life = life || Infinity;
+	},
+	isActive : function(target)
+	{
+		if ((this.life -= SPP.frameTime) <= 0)
 		{
-			this.destory();
-			dispatchEvent(new SPP.Event("dead"));
+			this.dispatchEvent(new SPP.Event("dead"));
 			return false;
 		}
-		this.update();
+		this.update(target);
 		return true;
 	},
-	update : function() {}
+	update : function(target)
+	{
+		target.resultant.add(this.value);
+	},
+	dealloc : function()
+	{
+		this.value =null;
+		this.life = undefined;
+	}
 };
+SPP.extend(SPP.Force.prototype,SPP.EventDispatcher.prototype);

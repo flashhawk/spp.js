@@ -1,24 +1,26 @@
-SPP.Particle = function() {
-	SPP.EventDispatcher.call(this);
-	this.position = new SPP.Vector2D();
-	this.velocity = new SPP.Vector2D();
+SPP.Particle = function()
+{
+	this.parent=null;
+	this.position = new SPP.Vector2D(0,0);
+	this.velocity = new SPP.Vector2D(0,0);
 	this.damp = new SPP.Vector2D(0.1, 0.1);
 	this.life = Infinity;
-	this.forcesMap = {};
+	this._forcesMap = {};
 	this.extra = {};
 	this.resultant = new SPP.Vector2D();
 
 	this.boundary = null;
-	this.boundaryType=SPP.Particle.OFFSCREEN;
+	this.boundaryType = SPP.Particle.OFFSCREEN;
 	this.bounceIntensity = 2;
-	
-	this.onUpdate=null;
+
+	this.onUpdate = null;
 };
-SPP.Particle.OFFSCREEN="offscreen";
-SPP.Particle.BOUNCE="bounce";
+SPP.Particle.OFFSCREEN = "offscreen";
+SPP.Particle.BOUNCE = "bounce";
 SPP.Particle.prototype = {
 	constructor : SPP.Particle,
-	init : function(x, y, life) {
+	init : function(x, y, life)
+	{
 		if (life <= 0)
 		{
 			this.dispatchEvent(new SPP.Event("dead"));
@@ -27,36 +29,47 @@ SPP.Particle.prototype = {
 		this.life = life || Infinity;
 		this.position.reset(x, y);
 	},
-	addForce : function(id, force) {
-		this.forcesMap[id] = force;
+	addForce : function(id, force)
+	{
+		this._forcesMap[id] = force;
 	},
-	removeForce : function(id) {
-		delete this.forcesMap[id];
+	removeForce : function(id)
+	{
+		delete this._forcesMap[id];
 	},
-	removeAllForces : function() {
-
-		for ( var i in this.forcesMap)
+	removeAllForces : function()
+	{
+		for ( var i in this._forcesMap)
 		{
-			delete _forces[i];
+			delete this._forcesMap[i];
 		}
-
 	},
-	render : function() {
+	render : function()
+	{
 		this.update();
-		if(this.onUpdate)this.onUpdate.apply(this);
-		this.resultant.reset(0, 0);
-		for ( var i in this.forcesMap)
+		if (this.onUpdate)
+			this.onUpdate.apply(this);
+		// this.resultant.reset(0, 0);
+		if(this.parent!=null)
 		{
-			if (!this.forcesMap[i].isActive())
+			var parentFroceMap=this.parent.getForceMap();
+			for ( var i in parentFroceMap)
 			{
-				delete this.forcesMap[i];
-				this.forcesMap[i]=null;
-			} else
+				if (!parentFroceMap[i].isActive(this))
+				{
+					delete parentFroceMap[i];
+				}
+			}
+		}
+		for ( var i in this._forcesMap)
+		{
+			if (!this._forcesMap[i].isActive(this))
 			{
-				this.resultant.add(this.forcesMap[i].value);
+				delete this._forcesMap[i];
 			};
 		}
 		this.velocity.add(this.resultant);
+		this.resultant.reset(0, 0);
 		this.velocity.x *= (1 - this.damp.x);
 		this.velocity.y *= (1 - this.damp.y);
 		this.position.add(this.velocity);
@@ -71,32 +84,41 @@ SPP.Particle.prototype = {
 		this.dispatchEvent(new SPP.Event("dead"));
 
 	},
-	update : function() {
+	update : function()
+	{
 
 	},
-	bounce : function() {
+	bounce : function()
+	{
 
-		if (this.position.x < this.boundary.left()|| this.position.x > this.boundary.right())
+		if (this.position.x < this.boundary.left()
+				|| this.position.x > this.boundary.right())
 		{
-			this.position.x = this.position.x < this.boundary.left() ? this.boundary.left(): this.boundary.right();
+			this.position.x = this.position.x < this.boundary.left() ? this.boundary
+					.left()
+					: this.boundary.right();
 			this.velocity.scaleX(-this.bounceIntensity);
-			
+
 		}
-		if (this.position.y < this.boundary.top()|| this.position.y > this.boundary.bottom())
+		if (this.position.y < this.boundary.top()
+				|| this.position.y > this.boundary.bottom())
 		{
-			this.position.y = this.position.y < this.boundary.top() ? this.boundary.top(): this.boundary.bottom();
+			this.position.y = this.position.y < this.boundary.top() ? this.boundary
+					.top()
+					: this.boundary.bottom();
 			this.velocity.scaleY(-this.bounceIntensity);
 		}
 		this.resultant.scale(0);
 
 	},
-	offscreen : function() {
+	offscreen : function()
+	{
 
 		if (this.position.x < this.boundary.left())
 		{
 			this.position.x = this.boundary.right();
 		}
-		
+
 		if (this.position.x > this.boundary.right())
 		{
 			this.position.x = this.boundary.left();
@@ -113,38 +135,41 @@ SPP.Particle.prototype = {
 		}
 
 	},
-	destory : function() {
-
+	dealloc : function()
+	{
+		this.parent=null;
+		this.position = null;
+		this.velocity = null;
+		this.damp = null;
+		this.life = null;
+		this._forcesMap = null;
+		this.extra =null;
+		this.resultant = null;
+		this.boundary = null;
+		this.boundaryType = null;
+		this.bounceIntensity = null;
+		this.onUpdate = null;
 	},
-	reset : function() {
+	reset : function()
+	{
 		this.position.reset(0, 0);
 		this.velocity.reset(0, 0);
 		this.damp.reset(0.1, 0.1);
 		this.life = 0;
-		this.forcesMap = {};
-		this.extra = {};
+		this.removeAllForces();
+		for ( var prop in this.extra)
+		{
+			delete this.extra[prop];
+		}
+		;
 		this.resultant.reset(0, 0);
 
 		this.boundary = null;
-		this.boundaryType=SPP.Particle.OFFSCREEN;
+		this.boundaryType = SPP.Particle.OFFSCREEN;
 		this.bounceIntensity = 2;
-		
-		this.onUpdate=null;
-	},
-	toString:function()
-	{
-		return "particle:\n[\n"+
-		"	life:"+this.life+",\n"+
-		"	position:"+this.position.toString()+",\n"+
-		"	velocity:"+this.velocity.toString()+",\n"+
-		"	resultant:"+this.resultant.toString()+",\n"+
-		"	boundaryType:"+this.boundaryType.toString()+",\n"+
-		"	boundary:"+(this.boundary!=null?this.resultant.toString():"null")+",\n"+
-		"	bounceIntensity:"+this.bounceIntensity+",\n"+
-		"	damp:"+this.damp.toString()+",\n"+
-		"	extra:"+this.extra.toString()+",\n"+
-		"	onUpdate:"+(this.onUpdate!=null?this.onUpdate.toString():"null")+"\n"+
-		"]\n";
-	}
 
+		this.onUpdate = null;
+		this.parent=null;
+	}
 };
+SPP.extend(SPP.Particle.prototype,SPP.EventDispatcher.prototype);

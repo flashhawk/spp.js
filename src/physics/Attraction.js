@@ -1,23 +1,33 @@
-SPP.Attraction=function(attractionPosition,maxValue,r,life)
+SPP.Attraction=function()
 {
-	SPP.Force.call(this,0,0, life);
+	SPP.Force.call(this);
+};
+SPP.inherit(SPP.Attraction,SPP.Force);
+SPP.Attraction.prototype.init=function(attractionPosition,maxValue,r,life)
+{
+	SPP.Force.prototype.init.call(this,0,0,life);
 	this.maxValue=maxValue;
 	this.r=r;
 	this.attractionPosition=attractionPosition;
-	this.targetParticle=null;
 };
-SPP.Attraction.prototype=SPP.inherit(SPP.Force.prototype);
-SPP.Attraction.prototype.constructor=SPP.Attraction;
-SPP.Attraction.prototype.update=function()
+SPP.Attraction.prototype.update=function(target)
 {
-	var d =this.attractionPosition.distanceTo(this.targetParticle.position);
+	var d =this.attractionPosition.distanceTo(target.position);
 	if (d < this.r)
 	{
-		this.value.subVectors(this.targetParticle.position,this.attractionPosition);
+		this.value.reset(0,0);
 	}
 	else 
 	{
-		this.value.subVectors(this.attractionPosition,this.targetParticle.position);
+		this.value.subVectors(this.attractionPosition,target.position);
+		this.value.normalize().setLength(this.maxValue);
 	};
-	this.value.scale(this.maxValue / d);
+	target.resultant.add(this.value);
+};
+SPP.Attraction.prototype.dealloc=function()
+{
+	SPP.Force.prototype.dealloc.apply(this);
+	this.maxValue=undefined;
+	this.r=undefined;
+	this.attractionPosition=null;
 };

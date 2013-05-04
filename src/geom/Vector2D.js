@@ -227,7 +227,9 @@ SPP.Vector2D.prototype =
      */
     normalize:function()
     {
+    	if(this.getLength()!=0)
     	this.scale(1/this.getLength());
+    	else this.scale(0);
     	return this;
     },
     /**
