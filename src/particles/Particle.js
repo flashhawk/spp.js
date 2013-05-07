@@ -34,12 +34,10 @@ SPP.Particle.prototype = {
 		delete this.forcesMap[id];
 	},
 	removeAllForces : function() {
-
 		for ( var i in this.forcesMap)
 		{
 			delete _forces[i];
 		}
-
 	},
 	render : function() {
 		this.update();
@@ -50,7 +48,6 @@ SPP.Particle.prototype = {
 			if (!this.forcesMap[i].isActive())
 			{
 				delete this.forcesMap[i];
-				this.forcesMap[i]=null;
 			} else
 			{
 				this.resultant.add(this.forcesMap[i].value);
@@ -121,8 +118,11 @@ SPP.Particle.prototype = {
 		this.velocity.reset(0, 0);
 		this.damp.reset(0.1, 0.1);
 		this.life = 0;
-		this.forcesMap = {};
-		this.extra = {};
+		this.removeAllForces();
+		for ( var prop in this.extra)
+		{
+			delete this.extra[prop];
+		}
 		this.resultant.reset(0, 0);
 
 		this.boundary = null;

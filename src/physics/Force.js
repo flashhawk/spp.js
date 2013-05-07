@@ -10,7 +10,7 @@ SPP.Force.prototype = {
 		if ((this.life-=SPP.frameTime) <= 0)
 		{
 			this.destory();
-			dispatchEvent(new SPP.Event("dead"));
+			this.dispatchEvent(new SPP.Event("dead"));
 			return false;
 		}
 		this.update();
