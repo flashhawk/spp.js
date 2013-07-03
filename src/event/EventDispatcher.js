@@ -50,3 +50,16 @@ SPP.EventDispatcher.prototype =
 		}
 	}
 };
+SPP.EventDispatcher.prototype.on=SPP.EventDispatcher.prototype.addEventListener;
+SPP.EventDispatcher.prototype.once=function(type, listener) 
+{
+	  function g(event) 
+	  {
+		   //event.target.removeEventListener(type, g);
+		   this.removeEventListener(type, g);
+		   listener.call(this, event);
+	  }
+	  this.addEventListener(type, g);
+};
+
+

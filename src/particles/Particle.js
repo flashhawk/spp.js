@@ -161,6 +161,7 @@ SPP.Particle.prototype = {
 		this.damp.reset(0.1, 0.1);
 		this.life = 0;
 		this.removeAllForces();
+		this.removeAllEventListeners();
 		for ( var prop in this.extra)
 		{
 			delete this.extra[prop];
