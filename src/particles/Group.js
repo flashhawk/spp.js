@@ -1,4 +1,4 @@
-SPP.Emitter = function(parent)
+SPP.Group = function(parent)
 {
 	var _parent=parent;
 	var _forcesMap = {};

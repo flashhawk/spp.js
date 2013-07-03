@@ -29,6 +29,10 @@ SPP.Particle.prototype = {
 		this.life = life || Infinity;
 		this.position.reset(x, y);
 	},
+	getForce:function(id)
+	{
+		return this._forcesMap[id];
+	},
 	addForce : function(id, force)
 	{
 		this._forcesMap[id] = force;

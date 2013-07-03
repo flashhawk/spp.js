@@ -15,7 +15,7 @@
 				<file name="Vector2D.js" />
 			</sources>
 			<sources dir="${basedir}/src/particles">
-				<file name="Emitter.js" />
+				<file name="Group.js" />
 				<file name="Particle.js" />
 				<file name="Pool.js" />
 				<file name="ParticleSystem.js" />

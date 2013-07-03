@@ -9,22 +9,7 @@ SPP.frameTime = 0;
 SPP.inherit = function(ctor, superCtor)
 {
 	ctor.superClass = superCtor;
-	if (superCtor.prototype == null)
-		throw TypeError();
-	if (Object.create)
-	{
-		ctor.prototype = Object.create(superCtor.prototype);
-		ctor.prototype.constructor = ctor;
-		return;
-	}
-	var t = typeof (superCtor.prototype);
-	if (t !== "object" && t !== "function")
-		throw TypeError();
-	function f()
-	{
-	}
-	f.prototype = superCtor.prototype;
-	ctor.prototype = new f();
+	ctor.prototype = Object.create(superCtor.prototype);
 	ctor.prototype.constructor = ctor;
 };
 SPP.extend = function(origin, add)

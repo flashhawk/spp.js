@@ -4,7 +4,7 @@ SPP.ParticleSystem = function()
 	var _particlePool = new SPP.Pool();
 	var _forces = [];
 	var _forcePool=new SPP.Pool();
-	var _emitters = [];
+	var _groups = [];
 	var _lastTime = null;
 	var _isRunning = false;
 	this.getParticles = function()
@@ -24,29 +24,29 @@ SPP.ParticleSystem = function()
 		_forces.push(f);
 		return f;
 	};
-	this.createEmitter = function()
+	this.createGroup = function()
 	{
-		var emitter = new SPP.Emitter(this);
-		_emitters.push(emitter);
-		return emitter;
+		var group = new SPP.Group(this);
+		_groups.push(group);
+		return group;
 	};
-	this.destroyEmitter = function(emitter)
+	this.destroyEmitter = function(group)
 	{
-		var index = _emitters.indexOf(emitter);
+		var index = _groups.indexOf(group);
 		if (index == -1)return;
 		var l = _particles.length;
 		while (l-- > 0)
 		{
-			if (_particles[l].parent===emitter)
+			if (_particles[l].parent===group)
 			{
 				_particlePool.recycle(_particles[l]);
 				_particles.splice(l, 1);
 			}
 		}
-		_emitters.splice(index, 1);
-		 emitter.dealloc();
+		_groups.splice(index, 1);
+		group.dealloc();
 	};
-	this.destroyAllEmitters = function()
+	this.destroyAllGroup = function()
 	{
 		var l = _particles.length;
 		while (l-- > 0)
@@ -57,11 +57,11 @@ SPP.ParticleSystem = function()
 				_particles.splice(l, 1);
 			}
 		};
-		for(var i=0,l=_emitters.length;i<l;i++)
+		for(var i=0,l=_groups.length;i<l;i++)
 		{
-			_emitters[i].dealloc();
+			_groups[i].dealloc();
 		}
-		_emitters.length=0;
+		_groups.length=0;
 	};
 	this.render = function()
 	{
@@ -114,16 +114,16 @@ SPP.ParticleSystem = function()
 		{
 			_particles[i].dealloc();
 		};
-		for(var i=0,l=_emitters.length;i<l;i++)
+		for(var i=0,l=_groups.length;i<l;i++)
 		{
-			_emitters[i].dealloc();
+			_groups[i].dealloc();
 		};
 		for(var i=0,l=_forces.length;i<l;i++)
 		{
 			_forces[i].dealloc();
 		};
-		_emitters.length = 0;
-		_emitters = null;
+		_groups.length = 0;
+		_groups = null;
 		
 		_particles.length = 0;
 		_particles = null;
