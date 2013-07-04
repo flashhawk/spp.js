@@ -128,6 +128,8 @@ function birdUpdate()
 	this.extra.bird.x=this.position.x;
 	this.extra.bird.y=this.position.y;
 	this.extra.bird.alpha-=0.01;
+	this.extra.bird.scaleX-=0.01;
+	this.extra.bird.scaleY-=0.01;
 	if(this.extra.bird.alpha<=0)
 	{
 		this.getForce("brownianForce").life=0;
