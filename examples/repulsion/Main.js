@@ -2,11 +2,11 @@ var canvas;
 var context;
 var particleSystem;
 var boundary;
-var mouse = {};
+var mouse;
 var texture;
 var stats;
-var mouseDown = false;
-var repulsionPoint;
+var repulsionForce;
+var brownianForce;
 
 
 $(document).ready(function() {
@@ -20,7 +20,11 @@ function init() {
 	context = canvas.getContext("2d");
 	
 	particleSystem = new SPP.ParticleSystem();
-	repulsionPoint=new SPP.Vector2D();
+	mouse=new SPP.Vector2D();
+	repulsionForce=new SPP.Repulsion();
+	repulsionForce.init(mouse, 2,200);
+	brownianForce= new SPP.SimpleBrownian();
+	brownianForce.init(1);
 	boundary=new SPP.Rectangle(0,0,canvas.width,canvas.height);
 	
 	texture = new Image();
@@ -36,11 +40,9 @@ function init() {
 
 function animate()
 {
-	requestAnimationFrame(animate);
-	//context.clearRect(0, 0, canvas.width, canvas.height);
+	animationID=requestAnimationFrame(animate);
 	context.fillStyle = 'rgba(0,0,0,0.3)';
 	context.fillRect(0, 0, canvas.width, canvas.height);
-	repulsionPoint.reset(mouse.x, mouse.y);
 	particleSystem.render();
 	stats.update();
 }
@@ -58,26 +60,21 @@ function initParticles()
 	for ( var i = 0; i < 1000; i++)
 	{
 		var p = particleSystem.createParticle(SPP.SpriteImage);
-		
 		p.boundary=boundary;
-		var brownianForce = new SPP.Brownian(0.5, Math.random()+1);
-		p.addForce("brownian", brownianForce);
-		
-		var repulsionForce=new SPP.Repulsion(repulsionPoint,5,300);
-		repulsionForce.targetParticle=p;
+		var brownianForce = new SPP.Brownian();
+        brownianForce.init(0.5, Math.random()*2+1);
+        p.addForce("brownianForce",brownianForce);
 		p.addForce("repulsionForce", repulsionForce);
-		
 		p.onUpdate=arrowUpdate;
 		p.init(canvas.width*0.5, canvas.height*0.5,Infinity,texture,context);
 	}
 };
 
-function arrowUpdate() {
+function arrowUpdate()
+{
 	this.rotation=SPP.MathUtils.toRadian(this.velocity.getAngle());
-	
 };
-// *************************************mouse
-// event***************************************************************
+
 function mousemove(e) {
 
 	// Get the mouse position relative to the canvas element.

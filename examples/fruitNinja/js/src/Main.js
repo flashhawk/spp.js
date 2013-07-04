@@ -38,14 +38,11 @@ function init()
 	
 	//particle system
 	particleSystem = new SPP.ParticleSystem();
-	particleSystem.start();
 	bladeSystem=new SPP.ParticleSystem();
-	bladeSystem.start();
 	fruitSystem=new SPP.ParticleSystem();
-	fruitSystem.start();
 	bombSystem=new SPP.ParticleSystem();
-	bombSystem.start();
-	gravity = new SPP.Gravity(0.15);
+	gravity = new SPP.Gravity();
+	gravity.init(0.15);
 	
 	//data 
 	storage = window.localStorage;
@@ -57,6 +54,11 @@ function init()
 	ui_gamelifeTexture=assetsManager["gamelife-3"];
 	gameLevel=0.1;
 	
+	
+	particleSystem.start();
+	bladeSystem.start();
+	fruitSystem.start();
+	bombSystem.start();
 	render();
 	topCanvas.addEventListener('mousemove', mousemove, false);
 	

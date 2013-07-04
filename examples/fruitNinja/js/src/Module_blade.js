@@ -7,9 +7,9 @@
 		var i = bladeSystem.getParticles().length;
 		var lineWidth = width;
 		var step = width / (i - 1);
-		topContext.beginPath();
 		while (i-- > 1)
 		{
+			topContext.beginPath();
 			if (i == 1)
 				topContext.lineWidth = 1;
 			else
@@ -22,7 +22,7 @@
 			lineWidth -= step;
 			if (lineWidth <=0)
 				lineWidth = 1;
-		}
+		};
 	};
 	buildColorBlade = function(color, width) {
 		topContext.strokeStyle = color;

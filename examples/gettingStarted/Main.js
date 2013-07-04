@@ -3,10 +3,12 @@ var context;
 var particleSystem;
 var boundary;
 var mouse = {};
-var gravity = new SPP.Gravity(0.2);
+var gravity = new SPP.Gravity();
+var brownianForce = new SPP.SimpleBrownian();
 var texture;
 var stats;
 var mouseDown = false;
+var animationID;
 
 
 $(document).ready(function() {
@@ -23,6 +25,8 @@ function init() {
 	context.globalCompositeOperation = "lighter";
 
 	particleSystem = new SPP.ParticleSystem();
+	gravity.init(0.3);
+	brownianForce.init(1);
 	texture = new Image();
 	texture.src = "images/star.png";
 	$(texture).load(function() {
@@ -35,7 +39,7 @@ function init() {
 
 function animate()
 {
-	requestAnimationFrame(animate);
+	animationID=requestAnimationFrame(animate);
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	particleSystem.render();
 	stats.update();
@@ -64,11 +68,10 @@ function mousemove(e) {
 		mouse.x = e.offsetX;
 		mouse.y = e.offsetY;
 	}
-	for ( var i = 0; i < 3; i++)
+	for ( var i = 0; i < 4; i++)
 	{
 		var p = particleSystem.createParticle(MyParticle);
-		p.addForce("g", gravity);
-		var brownianForce = new SPP.Brownian(0.3, 0.05);
+		p.addForce("gravity", gravity);
 		p.addForce("brownian", brownianForce);
 		p.damp.reset(0.05, 0.05);
 		p.velocity.y = -10;
@@ -96,9 +99,7 @@ function initStatsBar() {
 function MyParticle() {
 	SPP.Particle.call(this);
 };
-MyParticle.prototype = SPP.inherit(SPP.Particle.prototype);
-MyParticle.prototype.constructor = MyParticle;
-
+SPP.inherit(MyParticle,SPP.Particle);
 MyParticle.prototype.update = function() {
 	//this.rotation+=0.1;
 	this.scale-=.02;
@@ -107,7 +108,6 @@ MyParticle.prototype.update = function() {
 		this.scale=0;
 		this.life=0;
 	}
-	
 	context.translate(this.position.x,this.position.y);
 	context.rotate(this.rotation);
 	context.scale(this.scale,this.scale);

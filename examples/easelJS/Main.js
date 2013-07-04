@@ -3,7 +3,7 @@ var context;
 var particleSystem;
 var boundary;
 var mouse = {};
-var gravity = new SPP.Gravity(-0.2);
+var gravity;
 var texture;
 var stats;
 var mouseDown = false;
@@ -26,6 +26,8 @@ function init() {
 	stage = new createjs.Stage(canvas);
 
 	particleSystem = new SPP.ParticleSystem();
+	gravity = new SPP.Gravity();
+	gravity.init(-0.2);
 	texture = new Image();
 	texture.src = "assets/bird.png";
 	$(texture).load(function() {
@@ -103,8 +105,9 @@ function buildBird(x,y)
 {
 	var p = particleSystem.createParticle(SPP.Particle);
 	p.addForce("g", gravity);
-	var brownianForce = new SPP.Brownian(0.3, 0.8);
-	p.addForce("brownian", brownianForce);
+	var brownianForce =particleSystem.createForce(SPP.Brownian);
+	brownianForce.init(0.3, 0.8);
+	p.addForce("brownianForce", brownianForce);
 	p.damp.reset(0.05, 0.05);
 	p.velocity.y = -10;
 	p.init(mouse.x, mouse.y);
@@ -124,16 +127,16 @@ function birdUpdate()
 {
 	this.extra.bird.x=this.position.x;
 	this.extra.bird.y=this.position.y;
-	this.extra.bird.alpha-=0.005;
+	this.extra.bird.alpha-=0.01;
 	if(this.extra.bird.alpha<=0)
 	{
+		this.getForce("brownianForce").life=0;
 		this.life=0;
 		this.extra.bird.alpha=1;
 		stage.removeChild(this.extra.bird);
 		this.extra.bird=null;
 	}
 };
-
 function mousedown(e) {
 	mouseDown = true;
 }
@@ -141,7 +144,6 @@ function mouseup(e)
 {
 	mouseDown = false;
 }
-
 function initStatsBar() {
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
