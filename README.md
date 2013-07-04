@@ -12,4 +12,42 @@ Spp.js is a sample physics particle system engine for javascript.
 * Open source!
 
 ### Getting Started
-Coming soon...
+```
+var ps=new SPP.ParticleSystem();
+var particle=ps.createParticle(SPP.Particle);
+particle.life=3;
+particle.position.x=50;
+particle.position.y=60;
+particle.addForce("someForceName",someForce);
+particle.onUpdate=someUpdateHander;
+particle.addEventListener("dead",deadHandler);
+animate();
+ps.start();
+
+function someUpdateHander()
+{
+        ...
+};
+function deadHandler(event)
+{
+        ...
+};
+
+function animate()
+{
+       requestAnimationFrame(animate);
+       ps.render();
+       ...
+} 
+
+```
+### Examples
+* [gettingStarted](http://flashhawk.github.com/spp.js/examples/gettingStarted/)
+* [spriteImage](http://flashhawk.github.com/spp.js/examples/spriteImage/)
+* [fruitNinja](http://flashhawk.github.com/spp.js/examples/fruitNinja/)
+* [easelJS](http://flashhawk.github.com/spp.js/examples/easelJS/)
+* [attraction](http://flashhawk.github.com/spp.js/examples/attraction/)
+* [repulsion](http://flashhawk.github.com/spp.js/examples/repulsion/)
+
+### Support or Contact
+Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
