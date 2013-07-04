@@ -20,7 +20,8 @@ particle.position.x=50;
 particle.position.y=60;
 particle.addForce("someForceName",someForce);
 particle.onUpdate=someUpdateHander;
-particle.addEventListener("dead",deadHandler);
+//particle.addEventListener("dead",deadHandler);
+particle.on("dead",deadHandler);
 animate();
 ps.start();
 
