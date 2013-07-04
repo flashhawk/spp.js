@@ -1,5 +1,5 @@
 var SPP = SPP || {
-	REVISION : 'Beta',
+	REVISION : 'Release1.0',
 	AUTHOR : "flashhawk",
 	BLOG : "flashquake.cn",
 	github : "https://github.com/flashhawk",
