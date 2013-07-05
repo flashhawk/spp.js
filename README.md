@@ -45,10 +45,14 @@ function animate()
 ### Examples
 * [gettingStarted](http://flashhawk.github.com/spp.js/examples/gettingStarted/)
 * [spriteImage](http://flashhawk.github.com/spp.js/examples/spriteImage/)
-* [fruitNinja](http://flashhawk.github.com/spp.js/examples/fruitNinja/)
 * [easelJS](http://flashhawk.github.com/spp.js/examples/easelJS/)
 * [attraction](http://flashhawk.github.com/spp.js/examples/attraction/)
 * [repulsion](http://flashhawk.github.com/spp.js/examples/repulsion/)
+
+### Game
+* [fruitNinja](http://flashhawk.github.com/spp.js/examples/fruitNinja/)
+* [斩立觉](https://itunes.apple.com/cn/app/zhan-li-jue/id636378939?ls=1&mt=8)
+
 
 ### Support or Contact
 Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
