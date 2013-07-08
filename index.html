@@ -1,41 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Spp.js : A sample physics particle system engine for javascript." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Spp.js by flashhawk</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Spp.js</title>
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/flashhawk/spp.js">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/flashhawk/spp.js/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/flashhawk/spp.js/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/flashhawk/spp.js">View on GitHub</a>
+    <div class="wrapper">
 
-          <h1 id="project_title">Spp.js</h1>
-          <h2 id="project_tagline">A sample physics particle system engine for javascript.</h2>
+      <section>
+        <div id="title">
+          <h1>Spp.js</h1>
+          <p>A sample physics particle system engine for javascript.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/flashhawk">flashhawk</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/flashhawk/spp.js/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/flashhawk/spp.js/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome Spp.js</h3>
+        <h3>
+<a name="welcome-sppjs" class="anchor" href="#welcome-sppjs"><span class="octicon octicon-link"></span></a>Welcome Spp.js</h3>
 
 <p>Spp.js is a sample physics particle system engine for javascript.</p>
 
-<h3>Feature</h3>
+<h3>
+<a name="feature" class="anchor" href="#feature"><span class="octicon octicon-link"></span></a>Feature</h3>
 
 <ul>
 <li>Code less, simple structure.</li>
@@ -43,7 +52,8 @@
 <li>Make your own custom forces or particles</li>
 <li>Easy to make interactive programs</li>
 <li>Open source!</li>
-</ul><h3>Getting Started</h3>
+</ul><h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h3>
 
 <pre><code>var ps=new SPP.ParticleSystem();
 var particle=ps.createParticle(SPP.Particle);
@@ -74,30 +84,29 @@ function animate()
 
 </code></pre>
 
-<h3>Examples</h3>
+<h3>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h3>
 
 <ul>
 <li><a href="http://flashhawk.github.com/spp.js/examples/gettingStarted/">gettingStarted</a></li>
 <li><a href="http://flashhawk.github.com/spp.js/examples/spriteImage/">spriteImage</a></li>
-<li><a href="http://flashhawk.github.com/spp.js/examples/fruitNinja/">fruitNinja</a></li>
 <li><a href="http://flashhawk.github.com/spp.js/examples/easelJS/">easelJS</a></li>
 <li><a href="http://flashhawk.github.com/spp.js/examples/attraction/">attraction</a></li>
 <li><a href="http://flashhawk.github.com/spp.js/examples/repulsion/">repulsion</a></li>
-</ul><h3>Support or Contact</h3>
+</ul><h3>
+<a name="game" class="anchor" href="#game"><span class="octicon octicon-link"></span></a>Game</h3>
+
+<ul>
+<li><a href="http://flashhawk.github.com/spp.js/examples/fruitNinja/">fruitNinja</a></li>
+<li><a href="https://itunes.apple.com/cn/app/zhan-li-jue/id636378939?ls=1&amp;mt=8">斩立觉</a></li>
+</ul><h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>Weibo: <a href="http://weibo.com/flashawk">http://weibo.com/flashawk</a>? or contact <a href="mailto:flashhawkmx@gmail.com">flashhawkmx@gmail.com</a> and we’ll help you sort it out.</p>
       </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Spp.js maintained by <a href="https://github.com/flashhawk">flashhawk</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
