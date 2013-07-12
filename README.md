@@ -12,7 +12,7 @@ Spp.js is a sample physics particle system engine for javascript.
 * Open source!
 
 ### Getting Started
-```
+```html
 var ps=new SPP.ParticleSystem();
 var particle=ps.createParticle(SPP.Particle);
 particle.life=3;
