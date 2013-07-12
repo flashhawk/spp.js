@@ -13,34 +13,39 @@ Spp.js is a sample physics particle system engine for javascript.
 
 ### Getting Started
 ```html
-var ps=new SPP.ParticleSystem();
-var particle=ps.createParticle(SPP.Particle);
-particle.life=3;
-particle.position.x=50;
-particle.position.y=60;
-particle.addForce("someForceName",someForce);
-particle.onUpdate=someUpdateHander;
-//particle.addEventListener("dead",deadHandler);
-particle.on("dead",deadHandler);
-animate();
-ps.start();
+<script src="js/spp.min.js"></script>
+```
 
-function someUpdateHander()
-{
-        ...
-};
-function deadHandler(event)
-{
-        ...
-};
-
-function animate()
-{
-       requestAnimationFrame(animate);
-       ps.render();
-       ...
-} 
-
+```html
+<script>
+        var ps=new SPP.ParticleSystem();
+        var particle=ps.createParticle(SPP.Particle);
+        particle.life=3;
+        particle.position.x=50;
+        particle.position.y=60;
+        particle.addForce("someForceName",someForce);
+        particle.onUpdate=someUpdateHander;
+        //particle.addEventListener("dead",deadHandler);
+        particle.on("dead",deadHandler);
+        animate();
+        ps.start();
+        
+        function someUpdateHander()
+        {
+                ...
+        };
+        function deadHandler(event)
+        {
+                ...
+        };
+        
+        function animate()
+        {
+               requestAnimationFrame(animate);
+               ps.render();
+               ...
+        } 
+<script>
 ```
 ### Examples
 * [gettingStarted](http://flashhawk.github.com/spp.js/examples/gettingStarted/)
