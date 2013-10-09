@@ -2,6 +2,15 @@ SPP.EventDispatcher = function(){};
 SPP.EventDispatcher.prototype = 
 {
 	constructor : SPP.EventDispatcher,
+	apply: function ( object ) 
+	{
+		object.addEventListener = SPP.EventDispatcher.prototype.addEventListener;
+		object.hasEventListener = SPP.EventDispatcher.prototype.hasEventListener;
+		object.removeEventListener = SPP.EventDispatcher.prototype.removeEventListener;
+		object.dispatchEvent =SPP.EventDispatcher.prototype.dispatchEvent;
+		object.on=SPP.EventDispatcher.prototype.addEventListener;
+		object.once=SPP.EventDispatcher.prototype.once;
+	},
 	addEventListener : function(type, listener)
 	{
 		if (this._listeners === undefined)
