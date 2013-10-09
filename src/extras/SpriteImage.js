@@ -13,6 +13,7 @@ SPP.inherit(SPP.SpriteImage, SPP.Particle);
 SPP.SpriteImage.prototype.update = function()
 {
 	if(this.context==null||this.texture==null)return;
+	this.context.save();
 	this.context.globalAlpha=this.alpha;
 	this.context.translate(this.position.x,this.position.y);
 	this.context.rotate(this.rotation);
@@ -24,8 +25,7 @@ SPP.SpriteImage.prototype.update = function()
 			-this.texture.height*this.regY,
 			this.texture.width,
 			this.texture.height);
-	this.context.setTransform(1,0,0,1,0,0);
-	this.context.globalAlpha=1;
+	this.context.restore();
 };
 SPP.SpriteImage.prototype.init = function(x,y,life,texture,context) 
 {
