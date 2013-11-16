@@ -22,7 +22,7 @@ SPP.Attraction.prototype.update=function(target)
 		this.value.subVectors(this.attractionPosition,target.position);
 		this.value.normalize().setLength(this.maxValue);
 	};
-	target.resultant.add(this.value);
+    target.acceleration.add(this.value);
 };
 SPP.Attraction.prototype.dealloc=function()
 {
@@ -30,4 +30,11 @@ SPP.Attraction.prototype.dealloc=function()
 	this.maxValue=undefined;
 	this.r=undefined;
 	this.attractionPosition=null;
+};
+SPP.Attraction.prototype.reset=function()
+{
+    SPP.Force.prototype.reset.apply(this);
+    this.maxValue=undefined;
+    this.r=undefined;
+    this.attractionPosition=null;
 };

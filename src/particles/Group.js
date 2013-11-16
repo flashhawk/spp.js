@@ -6,7 +6,7 @@ SPP.Group = function(parent)
 	this.createParticle = function(particleType)
 	{
 		var p=_parent.createParticle(particleType);
-		p.parent=this;
+		p.group=this;
 		return p;
 	};
 	this.getForceMap=function()

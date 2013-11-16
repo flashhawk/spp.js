@@ -28,3 +28,5 @@ SPP.Pool= function()
 		_objArray=null;
 	};
 };
+SPP.forcePool=new SPP.Pool();
+SPP.particlePool=new SPP.Pool();

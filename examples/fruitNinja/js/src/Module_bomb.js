@@ -49,14 +49,15 @@
 	};
 	throwBomb = function() {
 		var p = bombSystem.createParticle(FruitGame.Fruit);
+        p.init(gameWidth * 0.5 + (1 - Math.random() * 2) * 300, gameHeight
+            + assetsManager.bomb.height, Infinity, assetsManager.bomb,
+            assetsManager.shadow, middleContext);
 		p.velocity.reset(0, -(10 + Math.random() * 3));
 		p.velocity.rotate(8 - Math.random() * 16);
 		p.damp.reset(0, 0);
 		p.addForce("g", gravity);
 		p.onUpdate = bombUpdate;
-		p.init(gameWidth * 0.5 + (1 - Math.random() * 2) * 300, gameHeight
-				+ assetsManager.bomb.height, Infinity, assetsManager.bomb,
-				assetsManager.shadow, middleContext);
+
 		p.bottomY = gameHeight + assetsManager.bomb.height;
 	};
 	// cut bomb
