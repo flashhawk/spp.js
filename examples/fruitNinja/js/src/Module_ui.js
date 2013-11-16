@@ -10,8 +10,9 @@
 		 gameState=GAME_READY;
 		
 		 ui_gameTitle = particleSystem.createParticle(SPP.SpriteImage);
+         ui_gameTitle.init(0,-assetsManager.gametitle.height,Infinity,assetsManager.gametitle,topContext);
 		 ui_gameTitle.regX= ui_gameTitle.regY=0;
-		 ui_gameTitle.init(0,-assetsManager.gametitle.height,Infinity,assetsManager.gametitle,topContext);
+
 		 TweenLite.to(ui_gameTitle.position,0.5,{y:0});
 		 
 		ui_newGame = particleSystem.createParticle(SPP.SpriteImage);
@@ -58,13 +59,13 @@
 	showScoreUI=function()
 	{
 		ui_scoreIcon = particleSystem.createParticle(SPP.SpriteImage);
+        ui_scoreIcon.init(10,10,Infinity,assetsManager.score,bottomContext);
 		ui_scoreIcon.regX=ui_scoreIcon.regY=0;
-		ui_scoreIcon.init(10,10,Infinity,assetsManager.score,bottomContext);
 
 		ui_gameLife = particleSystem.createParticle(SPP.SpriteImage);
+        ui_gameLife.init(gameWidth,8,Infinity,ui_gamelifeTexture,bottomContext);
 		ui_gameLife.regX=1;
 		ui_gameLife.regY=0;
-		ui_gameLife.init(gameWidth,8,Infinity,ui_gamelifeTexture,bottomContext);
 	};
 	
     hideScoreUI=function()
