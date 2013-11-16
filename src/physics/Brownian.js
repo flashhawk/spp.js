@@ -19,7 +19,7 @@ SPP.Brownian.prototype.update=function(target)
 		this.value.reset((Math.random()*2-1)*this.maxValue, (Math.random()*2-1)*this.maxValue);
 		this.pastTime=0;
 	};
-	target.resultant.add(this.value);
+    target.acceleration.add(this.value);
 };
 SPP.Brownian.prototype.dealloc=function()
 {
@@ -28,4 +28,10 @@ SPP.Brownian.prototype.dealloc=function()
 	this.cycle=undefined;
 	this.pastTime=undefined;
 };
-
+SPP.Brownian.prototype.reset=function()
+{
+    SPP.Force.prototype.reset.apply(this);
+    this.maxValue=undefined;
+    this.cycle=undefined;
+    this.pastTime=undefined;
+};

@@ -14,6 +14,7 @@ SPP.SpriteImage.prototype.update = function()
 {
 	if(this.context==null||this.texture==null)return;
 	this.context.save();
+    this.context.setTransform(1,0,0,1,0,0);
 	this.context.globalAlpha=this.alpha;
 	this.context.translate(this.position.x,this.position.y);
 	this.context.rotate(this.rotation);

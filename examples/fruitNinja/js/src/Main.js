@@ -41,8 +41,8 @@ function init()
 	bladeSystem=new SPP.ParticleSystem();
 	fruitSystem=new SPP.ParticleSystem();
 	bombSystem=new SPP.ParticleSystem();
-	gravity = new SPP.Gravity();
-	gravity.init(0.15);
+	gravity =new SPP.Force();
+	gravity.init(0,0.15);
 	
 	//data 
 	storage = window.localStorage;

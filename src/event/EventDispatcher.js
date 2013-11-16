@@ -5,8 +5,8 @@ SPP.EventDispatcher.prototype =
 	apply: function ( object ) 
 	{
 		object.addEventListener = SPP.EventDispatcher.prototype.addEventListener;
-		object.hasEventListener = SPP.EventDispatcher.prototype.hasEventListener;
 		object.removeEventListener = SPP.EventDispatcher.prototype.removeEventListener;
+        object.removeAllEventListeners = SPP.EventDispatcher.prototype.removeAllEventListeners;
 		object.dispatchEvent =SPP.EventDispatcher.prototype.dispatchEvent;
 		object.on=SPP.EventDispatcher.prototype.addEventListener;
 		object.once=SPP.EventDispatcher.prototype.once;

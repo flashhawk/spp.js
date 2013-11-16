@@ -90,15 +90,13 @@
 	throwFruit=function()
 	{
 		var textureObj=assetsManager.getRandomFruit();
-		
 		var p = fruitSystem.createParticle(FruitGame.Fruit);
+        p.init(gameWidth*0.5+(1-Math.random()*2)*200, gameHeight+textureObj.w.height,Infinity,textureObj.w,assetsManager.shadow,middleContext);
 		p.velocity.reset(0, -(10 + Math.random() * 3));
 		p.velocity.rotate(8 - Math.random() * 16);
 		p.damp.reset(0, 0);
 		p.addForce("g", gravity);
-
 		p.addEventListener("dead",missHandler);
-		p.init(gameWidth*0.5+(1-Math.random()*2)*200, gameHeight+textureObj.w.height,Infinity,textureObj.w,assetsManager.shadow,middleContext);
 		p.textureObj=textureObj;
 		p.bottomY=gameHeight+textureObj.w.height;
 	};

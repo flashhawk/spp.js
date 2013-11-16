@@ -11,11 +11,17 @@ SPP.SimpleBrownian.prototype.init=function(maxValue,life)
 SPP.SimpleBrownian.prototype.update=function(target)
 {
 	this.value.reset((Math.random()*2-1)*this.maxValue, (Math.random()*2-1)*this.maxValue);
-	target.resultant.add(this.value);
+    target.acceleration.add(this.value);
 };
 SPP.SimpleBrownian.prototype.dealloc=function()
 {
 	SPP.Force.prototype.dealloc.apply(this);
 	this.maxValue=undefined;
 	this.cycle=undefined;
+};
+SPP.SimpleBrownian.prototype.reset=function()
+{
+    SPP.Force.prototype.reset.apply(this);
+    this.maxValue=undefined;
+    this.cycle=undefined;
 };

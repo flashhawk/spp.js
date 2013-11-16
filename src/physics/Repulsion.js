@@ -21,7 +21,7 @@ SPP.Repulsion.prototype.update=function(target)
 		this.value.subVectors(target.position,this.repulsionPosition);
 		this.value.normalize().setLength(this.maxValue);
 	}
-	target.resultant.add(this.value);
+    target.acceleration.add(this.value);
 };
 SPP.Repulsion.prototype.dealloc=function()
 {
@@ -29,4 +29,11 @@ SPP.Repulsion.prototype.dealloc=function()
 	this.maxValue=undefined;
 	this.r=undefined;
 	this.repulsionPosition=null;
+};
+SPP.Repulsion.prototype.reset=function()
+{
+    SPP.Force.prototype.reset.apply(this);
+    this.maxValue=undefined;
+    this.r=undefined;
+    this.repulsionPosition=null;
 };

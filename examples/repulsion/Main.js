@@ -6,7 +6,7 @@ var mouse;
 var texture;
 var stats;
 var repulsionForce;
-var brownianForce;
+var zone;
 
 
 $(document).ready(function() {
@@ -21,12 +21,11 @@ function init() {
 	
 	particleSystem = new SPP.ParticleSystem();
 	mouse=new SPP.Vector2D();
-	repulsionForce=new SPP.Repulsion();
+	repulsionForce=particleSystem.createForce(SPP.Repulsion);
 	repulsionForce.init(mouse, 2,200);
-	brownianForce= new SPP.SimpleBrownian();
-	brownianForce.init(1);
-	boundary=new SPP.Rectangle(0,0,canvas.width,canvas.height);
-	
+    zone=new SPP.Zone();
+    zone.boundary=new SPP.Rectangle(0,0,canvas.width,canvas.height);
+
 	texture = new Image();
 	texture.src = "images/arrow.png";
 	$(texture).load(function() {
@@ -51,8 +50,8 @@ function resizeCanvas()
 {
 	canvas.width = $(window).get(0).innerWidth;
 	canvas.height = $(window).get(0).innerHeight;
-	boundary.width=canvas.width;
-	boundary.height=canvas.height;
+    zone.boundary.width=canvas.width;
+    zone.boundary.height=canvas.height;
 }
 
 function initParticles()
@@ -60,13 +59,13 @@ function initParticles()
 	for ( var i = 0; i < 1000; i++)
 	{
 		var p = particleSystem.createParticle(SPP.SpriteImage);
-		p.boundary=boundary;
-		var brownianForce = new SPP.Brownian();
+        p.init(canvas.width*0.5, canvas.height*0.5,Infinity,texture,context);
+		p.zone=zone;
+		var brownianForce =particleSystem.createForce(SPP.Brownian);
         brownianForce.init(0.5, Math.random()*2+1);
         p.addForce("brownianForce",brownianForce);
 		p.addForce("repulsionForce", repulsionForce);
 		p.onUpdate=arrowUpdate;
-		p.init(canvas.width*0.5, canvas.height*0.5,Infinity,texture,context);
 	}
 };
 

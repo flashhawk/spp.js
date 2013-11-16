@@ -6,6 +6,9 @@
 			<sources dir="${basedir}/src">
 				<file name="Spp.js" />
 			</sources>
+            <sources dir="${basedir}/src/utils">
+                <file name="MathUtils.js" />
+            </sources>
 			<sources dir="${basedir}/src/event">
 				<file name="Event.js" />
 				<file name="EventDispatcher.js" />
@@ -13,23 +16,21 @@
 			<sources dir="${basedir}/src/geom">
 				<file name="Rectangle.js" />
 				<file name="Vector2D.js" />
+                <file name="VectorPool.js" />
 			</sources>
 			<sources dir="${basedir}/src/particles">
-				<file name="Group.js" />
-				<file name="Particle.js" />
+                <file name="Particle.js" />
 				<file name="Pool.js" />
+                <file name="Group.js" />
 				<file name="ParticleSystem.js" />
+                <file name="Zone.js" />
 			</sources>
 			<sources dir="${basedir}/src/physics">
 				<file name="Force.js" />
 				<file name="Attraction.js" />
 				<file name="Brownian.js" />
 				<file name="SimpleBrownian.js" />
-				<file name="Gravity.js" />
 				<file name="Repulsion.js" />
-			</sources>
-			<sources dir="${basedir}/src/utils">
-				<file name="MathUtils.js" />
 			</sources>
 			<sources dir="${basedir}/src/extras">
 				<file name="SpriteImage.js" />
