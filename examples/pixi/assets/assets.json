@@ -1,0 +1,44 @@
+{"frames": {
+
+"leaf_0.png":
+{
+	"frame": {"x":2,"y":118,"w":88,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":7,"w":88,"h":56},
+	"sourceSize": {"w":90,"h":70}
+},
+"leaf_1.png":
+{
+	"frame": {"x":2,"y":2,"w":88,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":7,"w":88,"h":56},
+	"sourceSize": {"w":90,"h":70}
+},
+"leaf_2.png":
+{
+	"frame": {"x":2,"y":60,"w":88,"h":56},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":7,"w":88,"h":56},
+	"sourceSize": {"w":90,"h":70}
+},
+"leaf_3.png":
+{
+	"frame": {"x":2,"y":176,"w":43,"h":18},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":1,"w":43,"h":18},
+	"sourceSize": {"w":45,"h":20}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "assets.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":256},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:7fcb326420bd819c9c9637be8d9abceb:9ccc6a4e8c3fe486115909d9b9320826:fc5ba93692efa800f187ffa2cf36d872$"
+}
+}
