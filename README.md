@@ -8,8 +8,9 @@ Spp.js is a sample physics particle system engine for javascript.
 * Code less, simple structure.
 * Based on classical Newtonian mechanics.
 * Make your own custom forces or particles
-* Easy to build interactive projects.
+* Easy to build interactive projects with popular HTML5 2D rendering engine:[pixi.js](https://github.com/GoodBoyDigital/pixi.js),[EaselJS](https://github.com/CreateJS/EaselJS/)
 * Open source!
+
 
 ### Getting Started
 ```html
@@ -50,7 +51,8 @@ Spp.js is a sample physics particle system engine for javascript.
 ### Examples
 * [gettingStarted](http://flashhawk.github.com/spp.js/examples/gettingStarted/)
 * [spriteImage](http://flashhawk.github.com/spp.js/examples/spriteImage/)
-* [easelJS](http://flashhawk.github.com/spp.js/examples/easelJS/)
+* [spp for easelJS](http://flashhawk.github.com/spp.js/examples/easelJS/)
+* [spp for pixi.js](http://flashhawk.github.com/spp.js/examples/pixi/)
 * [attraction](http://flashhawk.github.com/spp.js/examples/attraction/)
 * [repulsion](http://flashhawk.github.com/spp.js/examples/repulsion/)
 
