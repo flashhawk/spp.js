@@ -55,6 +55,9 @@ function animate()
 * [fruitNinja](http://flashhawk.github.com/spp.js/examples/fruitNinja/)
 * [斩立觉](https://itunes.apple.com/cn/app/zhan-li-jue/id636378939?ls=1&mt=8)
 
+### Case
+* [蒙牛纯甄-立冬篇]![chunzhen_winter](http://flashhawk.github.io/spp.js/case/chunzhen_winter.png)
+
 
 ### Support or Contact
 Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
