@@ -27,7 +27,7 @@ function init()
 
     particleSystem=new SPP.ParticleSystem();
     windForce=particleSystem.createForce(SPP.Force);
-    windForce.init(0.03, 0);
+    windForce.init(0.06, 0);
 
     leafEmitter=new LeafEmitter(stage);
     particleSystem.start();
@@ -133,17 +133,16 @@ function LeafEmitter(container)
         sprite.position.y = -999;
         var particle = particleSystem.createParticle(Leaf);
         particle.init(-80, -80, Infinity, sprite);
-        particle.velocity.reset(0, 2 + Math.random() * 3);
-        particle.velocity.rotate(10 - Math.random() * 20);
+        particle.velocity.reset(0, 1+Math.random() * 2);
         particle.damp.reset(0, 0);
         particle.addForce("windForce", windForce);
         var brownian = particleSystem.createForce(SPP.Brownian);
-        brownian.init(0.1, Math.random() + 0.5);
+        brownian.init(0.15, Math.random()+0.5);
         brownian.target=particle;
         particle.addForce("brownianForce", brownian);
         _container.addChild(sprite);
     }
-
+    
     this.update = function ()
     {
         for(var i=0;i<10;i++)
