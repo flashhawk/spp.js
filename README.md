@@ -61,6 +61,21 @@ function animate()
 ### Docs
 * [Comming soon!](#)
 
+### Tutorials
+* [Comming soon!](#)
+
+### How to build ###
+
+Spp.js is build with ant and [closure-compiler](https://code.google.com/p/closure-compiler/wiki/BuildingWithAnt)
+
+```
+$>cd spp's root directory
+```
+Then build:
+
+```
+$> ant
+```
 
 ### Support or Contact
 Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
