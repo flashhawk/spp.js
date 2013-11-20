@@ -108,6 +108,7 @@ SPP.Particle.prototype = {
         this.position = null;
         this.velocity = null;
         this.acceleration = null;
+        this.damp = null;
         this.life = 0;
         this.removeAllForces();
         this.removeAllEventListeners();
