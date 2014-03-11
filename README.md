@@ -79,3 +79,6 @@ $> ant
 
 ### Support or Contact
 Weibo: http://weibo.com/flashawk? or contact flashhawkmx@gmail.com and we’ll help you sort it out.
+
+### License
+This content is released under the (http://opensource.org/licenses/MIT) MIT License.
