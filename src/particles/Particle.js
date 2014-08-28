@@ -18,6 +18,12 @@ SPP.Particle.prototype = {
         this.damp = SPP.VectorPool.get();
         this.damp.reset(0.1, 0.1);
         this.life = life || Infinity;
+        if (x instanceof Array) {
+            x = x[0] + ( Math.random() * x[1] );
+        }
+        if (y instanceof Array) {
+            y = y[0] + ( Math.random() * y[1] );
+        }
         this.position.reset(x, y);
     },
     getForce: function (id)
