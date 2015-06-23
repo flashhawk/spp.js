@@ -1,0 +1,7 @@
+{
+"name":"spp.js",
+"description":"Spp.js is a sample physics particle system engine for javascript.",
+"main":[
+    "build/spp.min.js"
+]
+}
